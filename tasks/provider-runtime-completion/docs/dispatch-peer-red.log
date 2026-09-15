@@ -1,0 +1,9 @@
+--- FAIL: TestUnidentifiedLaunchDefersUnboundPeerDispatchControls (0.39s)
+    local_owner_test.go:204: unbound peer reached rebind_owner: response_kind=error err=<nil>
+    local_owner_test.go:204: unbound peer reached resume: response_kind=error err=<nil>
+    local_owner_test.go:204: unbound peer reached retry: response_kind=error err=<nil>
+    local_owner_test.go:204: unbound peer reached accept: response_kind=error err=<nil>
+    local_owner_test.go:204: unbound peer reached answer: response_kind=error err=<nil>
+FAIL
+FAIL	codex-cli-orchestration-design/tools/orchestrator/internal/coordinator	1.008s
+FAIL

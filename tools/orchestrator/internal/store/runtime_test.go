@@ -404,6 +404,7 @@ func TestQuestionAnswerResumesSameAttemptOnce(t *testing.T) {
 	if err != nil || len(questionPage.Events) != 1 {
 		t.Fatalf("question page=%#v err=%v", questionPage, err)
 	}
+	assertSummaryActions(t, db, grant.TaskID, receipt.ControlToken, "blocked", 0, "status", "collect", "answer")
 	if status, answerErr := db.AnswerQuestion(ctx, AnswerSpec{TaskID: grant.TaskID, WorkRevision: 1, QuestionID: "question-1", QuestionRevision: 1, Answer: "Use the narrow API."}); answerErr != nil || status != "resume_queued" {
 		t.Fatalf("answer status=%q err=%v", status, answerErr)
 	}
@@ -462,6 +463,7 @@ func TestRetryUsesOnlyPreauthorizedFallbackAndAcceptReleasesDependency(t *testin
 		t.Fatalf("failure events=%#v err=%v", failurePage.Events, err)
 	}
 	firstFailure := failurePage.Events[0]
+	assertSummaryActions(t, db, first.TaskID, receipt.ControlToken, "blocked", 0, "status", "collect", "retry")
 	if _, err = db.QueueRetry(ctx, RetrySpec{TaskID: first.TaskID, WorkRevision: 1, EventID: firstFailure.EventID, EventRevision: firstFailure.EventRevision, EventHash: firstFailure.PayloadHash, ActionSlot: firstFailure.ActionSlot, SegmentID: first.SegmentID, NextAttemptNo: 2, UseNextFallback: true, CommandID: "retry-first"}); err != nil {
 		t.Fatal(err)
 	}
@@ -474,6 +476,7 @@ func TestRetryUsesOnlyPreauthorizedFallbackAndAcceptReleasesDependency(t *testin
 	if snapshot, snapshotErr := db.TaskSnapshot(ctx, first.TaskID); snapshotErr != nil || snapshot.Status != "result_ready" {
 		t.Fatalf("result snapshot=%#v err=%v", snapshot, snapshotErr)
 	}
+	assertSummaryActions(t, db, first.TaskID, receipt.ControlToken, "pending", 0, "status", "collect", "accept")
 	eventPage, err := db.CollectPending(ctx, first.TaskID, "", 0, false)
 	if err != nil || len(eventPage.Events) != 2 {
 		t.Fatalf("events=%#v err=%v", eventPage.Events, err)
@@ -511,6 +514,7 @@ func TestRetryUsesOnlyPreauthorizedFallbackAndAcceptReleasesDependency(t *testin
 	if status, reviewErr := db.ReviewResult(ctx, accepted); reviewErr != nil || status != "accepted" {
 		t.Fatalf("final review status=%q err=%v", status, reviewErr)
 	}
+	assertSummaryActions(t, db, first.TaskID, receipt.ControlToken, "completed", 0, "status", "collect")
 	dependent, err := db.TaskSnapshot(ctx, "retry-dependent")
 	if err != nil || dependent.Status != "ready" {
 		t.Fatalf("dependent=%#v err=%v", dependent, err)

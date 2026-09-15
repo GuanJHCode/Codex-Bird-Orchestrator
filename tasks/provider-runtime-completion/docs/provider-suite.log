@@ -1,0 +1,11 @@
+ok  	codex-cli-orchestration-design/tools/orchestrator/internal/adapter	0.583s
+ok  	codex-cli-orchestration-design/tools/orchestrator/internal/host	4.513s
+--- FAIL: TestCLIForceRestartReplaysSpoolBeforeExplicitResume (1.22s)
+    main_test.go:375: coordinator.log:
+    main_test.go:375: source-host.log:
+        {"error":"EOF","status":"error","version":1}
+    main_test.go:375: /tmp/g1-force-1754933552/orchestrator [resume --state-dir /tmp/g1-force-1754933552/state --task-id force-task --work-revision 1 --control-file /tmp/g1-force-1754933552/state/control/run-bf1fab77364c0c03102d95882d80997f30a1.json]: exit status 2
+        {"error":"conflict","status":"error","version":1}
+FAIL
+FAIL	codex-cli-orchestration-design/tools/orchestrator/cmd/orchestrator	11.527s
+FAIL

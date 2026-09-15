@@ -1,0 +1,8 @@
+--- FAIL: TestCLIForceRestartReplaysSpoolBeforeExplicitResume (0.29s)
+    main_test.go:307: build: exit status 1
+        # codex-cli-orchestration-design/tools/orchestrator/internal/store
+        ../../internal/store/store.go:108:16: out.migrateRuntime undefined (type *DB has no field or method migrateRuntime)
+        ../../internal/store/store.go:148:29: undefined: currentSchemaVersion
+FAIL
+FAIL	codex-cli-orchestration-design/tools/orchestrator/cmd/orchestrator	2.953s
+FAIL

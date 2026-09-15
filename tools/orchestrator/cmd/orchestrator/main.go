@@ -52,6 +52,10 @@ func run(ctx context.Context, args []string, stdout, stderr io.Writer) error {
 		return codeError("invalid_args")
 	}
 	switch args[0] {
+	case "owner-bind":
+		return ownerBind(ctx, args[1:], stdout)
+	case "provider-probe", "provider-lock":
+		return providerControl(ctx, args[0], args[1:], stdout)
 	case "serve":
 		return serve(ctx, args[1:], stderr)
 	case "source-host":
@@ -74,6 +78,8 @@ func run(ctx context.Context, args []string, stdout, stderr io.Writer) error {
 		return submit(ctx, args[1:], stdout)
 	case "status":
 		return taskControl(ctx, ipc.KindStatus, args[1:], stdout)
+	case "summary":
+		return taskControl(ctx, ipc.KindSummary, args[1:], stdout)
 	case "collect":
 		return taskControl(ctx, ipc.KindCollect, args[1:], stdout)
 	case "wait-events":
@@ -151,6 +157,13 @@ func rebindOwner(ctx context.Context, args []string, stdout io.Writer) error {
 	path := fs.String("request", "", "verified owner rebind request")
 	if fs.Parse(args) != nil || *path == "" || fs.NArg() != 0 {
 		return codeError("invalid_args")
+	}
+	var projection map[string]json.RawMessage
+	if err := readPrivateJSON(*path, &projection); err != nil {
+		return err
+	}
+	if string(projection["owner_mode"]) == `"local"` {
+		return rebindLocalOwner(ctx, *stateArg, *path, stdout)
 	}
 	verified, err := nativebridgecli.VerifyRebind(*path)
 	if err != nil {
@@ -255,7 +268,11 @@ func submit(ctx context.Context, args []string, stdout io.Writer) error {
 	if request.HostGeneration == "" || len(request.Tasks) == 0 {
 		return codeError("invalid_submit")
 	}
-	if request.OwnerCapability == "" {
+	if request.OwnerMode == "local" {
+		if err = verifyLocalProjection(request); err != nil {
+			return err
+		}
+	} else if request.OwnerCapability == "" {
 		if os.Getenv("ORCHESTRATOR_ENABLE_TEST_FAKE") != "1" {
 			return codeError("owner_capability_required")
 		}
@@ -542,14 +559,14 @@ func acknowledge(ctx context.Context, args []string, stdout io.Writer) error {
 		return err
 	}
 	var request ackFile
-	if err = readPrivateJSON(*requestPath, &request); err != nil || request.Version != 1 || request.TaskID == "" || request.ControlFile == "" || request.DeliveryID == "" || request.HistoryProofSHA256 == "" || len(request.Decisions) == 0 {
+	if err = readPrivateJSON(*requestPath, &request); err != nil || request.Version != 1 || request.TaskID == "" || request.ControlFile == "" || request.DeliveryID == "" || (request.HistoryProofSHA256 == "" && request.CollectionProofSHA256 == "") || len(request.Decisions) == 0 {
 		return codeError("invalid_ack")
 	}
 	capability, err := loadControlCapability(request.ControlFile)
 	if err != nil {
 		return err
 	}
-	payload := coordinator.AckRequest{TaskID: request.TaskID, ControllerThread: capability.ControllerThread, ControlToken: capability.ControlToken, DeliveryID: request.DeliveryID, HistoryProofSHA256: request.HistoryProofSHA256, Decisions: request.Decisions}
+	payload := coordinator.AckRequest{TaskID: request.TaskID, ControllerThread: capability.ControllerThread, ControlToken: capability.ControlToken, DeliveryID: request.DeliveryID, HistoryProofSHA256: request.HistoryProofSHA256, CollectionProofSHA256: request.CollectionProofSHA256, Decisions: request.Decisions}
 	response, err := call(ctx, state, ipc.KindAck, payload)
 	if err != nil {
 		return err
@@ -559,12 +576,13 @@ func acknowledge(ctx context.Context, args []string, stdout io.Writer) error {
 }
 
 type ackFile struct {
-	Version            int                 `json:"version"`
-	TaskID             string              `json:"task_id"`
-	ControlFile        string              `json:"control_file"`
-	DeliveryID         string              `json:"delivery_id"`
-	HistoryProofSHA256 string              `json:"history_proof_sha256"`
-	Decisions          []store.AckDecision `json:"decisions"`
+	CollectionProofSHA256 string              `json:"collection_proof_sha256,omitempty"`
+	Version               int                 `json:"version"`
+	TaskID                string              `json:"task_id"`
+	ControlFile           string              `json:"control_file"`
+	DeliveryID            string              `json:"delivery_id"`
+	HistoryProofSHA256    string              `json:"history_proof_sha256"`
+	Decisions             []store.AckDecision `json:"decisions"`
 }
 
 type reportCapabilityFile struct {
@@ -772,20 +790,22 @@ func sourceHost(parent context.Context, args []string) error {
 }
 
 type invocationPayload struct {
-	Kind           string   `json:"kind"`
-	Args           []string `json:"args,omitempty"`
-	Directory      string   `json:"directory,omitempty"`
-	Provider       string   `json:"provider,omitempty"`
-	BinaryPath     string   `json:"binary_path,omitempty"`
-	BinaryVersion  string   `json:"binary_version,omitempty"`
-	BinarySHA256   string   `json:"binary_sha256,omitempty"`
-	Prompt         string   `json:"prompt,omitempty"`
-	SessionKind    string   `json:"session_kind,omitempty"`
-	SessionID      string   `json:"session_id,omitempty"`
-	PermissionMode string   `json:"permission_mode,omitempty"`
-	Allow          []string `json:"allow,omitempty"`
-	Deny           []string `json:"deny,omitempty"`
-	ExtraArgs      []string `json:"extra_args,omitempty"`
+	Profile        *adapter.ExecutionProfile `json:"profile,omitempty"`
+	ProviderLock   *adapter.ProviderLock     `json:"provider_lock,omitempty"`
+	Kind           string                    `json:"kind"`
+	Args           []string                  `json:"args,omitempty"`
+	Directory      string                    `json:"directory,omitempty"`
+	Provider       string                    `json:"provider,omitempty"`
+	BinaryPath     string                    `json:"binary_path,omitempty"`
+	BinaryVersion  string                    `json:"binary_version,omitempty"`
+	BinarySHA256   string                    `json:"binary_sha256,omitempty"`
+	Prompt         string                    `json:"prompt,omitempty"`
+	SessionKind    string                    `json:"session_kind,omitempty"`
+	SessionID      string                    `json:"session_id,omitempty"`
+	PermissionMode string                    `json:"permission_mode,omitempty"`
+	Allow          []string                  `json:"allow,omitempty"`
+	Deny           []string                  `json:"deny,omitempty"`
+	ExtraArgs      []string                  `json:"extra_args,omitempty"`
 }
 
 type localInvocation struct {
@@ -811,6 +831,13 @@ func invocationForGrant(ctx context.Context, grant contract.LaunchCommand) (cont
 	if err := decode(grant.AdapterPayload, &payload); err != nil {
 		return nil, err
 	}
+	if payload.ProviderLock != nil {
+		lock := payload.ProviderLock
+		if payload.BinaryPath != "" || payload.BinaryVersion != "" || payload.BinarySHA256 != "" {
+			return nil, codeError("provider_lock_legacy_conflict")
+		}
+		payload.BinaryPath, payload.BinaryVersion, payload.BinarySHA256 = lock.Binary.Path, lock.Binary.Version, lock.Binary.SHA256
+	}
 	if payload.Provider == string(adapter.ProviderCodex) || payload.BinaryVersion == adapter.CodexVersion || strings.EqualFold(payload.BinarySHA256, adapter.CodexSHA256) {
 		return nil, codeError("codex_trial_guard_not_ready")
 	}
@@ -827,19 +854,27 @@ func invocationForGrant(ctx context.Context, grant contract.LaunchCommand) (cont
 		return localInvocation{args: payload.Args, dir: payload.Directory, env: map[string]string{}}, nil
 	}
 	request := adapter.Request{Provider: adapter.Provider(payload.Provider), Binary: adapter.BinaryPin{Path: payload.BinaryPath, Version: payload.BinaryVersion, SHA256: payload.BinarySHA256}, CWD: payload.Directory, Prompt: payload.Prompt, Session: adapter.SessionRef{Kind: adapter.SessionKind(payload.SessionKind), ID: payload.SessionID}, Permission: adapter.Permission{Mode: payload.PermissionMode, Allow: payload.Allow, Deny: payload.Deny}, ExtraArgs: payload.ExtraArgs}
+	request.Profile, request.Lock = payload.Profile, payload.ProviderLock
 	if err := adapter.VerifyExecutable(request.Binary, request.Binary.Version); err != nil {
 		return nil, err
 	}
 	probeCtx, cancel := context.WithTimeout(ctx, 2*time.Second)
 	defer cancel()
-	probe := exec.CommandContext(probeCtx, request.Binary.Path, "--version")
-	probe.Env = os.Environ()
-	version, err := probe.Output()
+	version, err := adapter.ProbeOutput(probeCtx, request.Binary.Path, "--version")
 	if err != nil {
 		return nil, codeError("binary_version_probe_failed")
 	}
 	if err = adapter.VerifyExecutable(request.Binary, strings.TrimSpace(string(version))); err != nil {
 		return nil, err
+	}
+	if request.Profile != nil {
+		help, err := adapter.ProbeOutput(probeCtx, request.Binary.Path, "--help")
+		if err != nil {
+			return nil, err
+		}
+		if err = adapter.CheckCapabilities(request, help); err != nil {
+			return nil, err
+		}
 	}
 	return adapter.BuildInvocation(request)
 }

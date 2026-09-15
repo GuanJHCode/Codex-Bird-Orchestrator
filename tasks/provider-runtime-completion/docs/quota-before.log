@@ -1,0 +1,9 @@
+goos: darwin
+goarch: arm64
+pkg: codex-cli-orchestration-design/tools/orchestrator/internal/store
+cpu: Apple M3 Pro
+BenchmarkQuotaAdmission-11    	      38	   9417320 ns/op	    4726 B/op	      54 allocs/op
+BenchmarkQuotaAdmission-11    	      49	   7880730 ns/op	    4353 B/op	      53 allocs/op
+BenchmarkQuotaAdmission-11    	      48	   7779232 ns/op	    3964 B/op	      53 allocs/op
+PASS
+ok  	codex-cli-orchestration-design/tools/orchestrator/internal/store	2.005s

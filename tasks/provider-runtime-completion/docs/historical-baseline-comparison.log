@@ -1,0 +1,184 @@
+BASELINE HEAD tasks/g0-tui-proxy/tests/test_proxy_observer.py::test_deep_json_is_bounded_by_parser_failure_and_emits_no_payload
+ERROR: found no collectors for /Users/guanjunhui/code/ai/codex-cli-orchestration-design/tasks/provider-runtime-completion/tmp/baseline-runtime/tasks/g0-tui-proxy/tests/test_proxy_observer.py::test_deep_json_is_bounded_by_parser_failure_and_emits_no_payload
+
+
+==================================== ERRORS ====================================
+_______ ERROR collecting tasks/g0-tui-proxy/tests/test_proxy_observer.py _______
+ImportError while importing test module '/Users/guanjunhui/code/ai/codex-cli-orchestration-design/tasks/provider-runtime-completion/tmp/baseline-runtime/tasks/g0-tui-proxy/tests/test_proxy_observer.py'.
+Hint: make sure your test modules/packages have valid Python names.
+Traceback:
+/opt/homebrew/Cellar/python@3.14/3.14.3_1/Frameworks/Python.framework/Versions/3.14/lib/python3.14/importlib/__init__.py:88: in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+tasks/g0-tui-proxy/tests/test_proxy_observer.py:8: in <module>
+    from proxy_observer import Observer
+E   ModuleNotFoundError: No module named 'proxy_observer'
+=========================== short test summary info ============================
+ERROR tasks/g0-tui-proxy/tests/test_proxy_observer.py
+1 error in 0.06s
+EXIT 4
+BASELINE HEAD tasks/g0-auth-preserving-activation/tests/test_owner_context.py::test_v1_prepare_and_send_are_rejected_while_legacy_binding_stays_audit_readable
+F                                                                        [100%]
+=================================== FAILURES ===================================
+_ test_v1_prepare_and_send_are_rejected_while_legacy_binding_stays_audit_readable _
+
+tmp_path = PosixPath('/private/var/folders/y_/9wqjj5ws6v9ggszdzytmxdlc0000gn/T/pytest-of-guanjunhui/pytest-2904/test_v1_prepare_and_send_are_r0')
+
+    def test_v1_prepare_and_send_are_rejected_while_legacy_binding_stays_audit_readable(tmp_path):
+        evidence = b"{}\n"
+        for verb in ("prepare", "send-once"):
+            case_dir = tmp_path / verb
+            case_dir.mkdir(mode=0o700)
+            legacy = old_binding()
+            legacy["controller_evidence_sha256"] = hashlib.sha256(evidence).hexdigest()
+            with standalone.Case(str(case_dir)) as case:
+                case.write_new("binding.json", legacy)
+                case.write_new("controller-evidence.json", {})
+            result = standalone.main([verb, "--case", str(case_dir), "--root", ROOT_THREAD, "--nonce", "sd-qual-08"])
+            assert result["status"] == "rejected"
+>           assert result["reason"] == "owner_context_required"
+E           AssertionError: assert 'operation_io_failed' == 'owner_context_required'
+E
+E             - owner_context_required
+E             + operation_io_failed
+
+tasks/g0-auth-preserving-activation/tests/test_owner_context.py:182: AssertionError
+=========================== short test summary info ============================
+FAILED tasks/g0-auth-preserving-activation/tests/test_owner_context.py::test_v1_prepare_and_send_are_rejected_while_legacy_binding_stays_audit_readable
+1 failed in 0.08s
+EXIT 1
+BASELINE HEAD tasks/g0-proxy-continuation/cold-start/tests/test_activation_service.py::test_same_profile_serializes_and_probe_does_not_consume_grant
+F                                                                        [100%]
+=================================== FAILURES ===================================
+________ test_same_profile_serializes_and_probe_does_not_consume_grant _________
+
+predicate = <function test_same_profile_serializes_and_probe_does_not_consume_grant.<locals>.scenario.<locals>.<lambda> at 0x1072db740>
+
+    async def eventually(predicate):
+        async with asyncio.timeout(3):
+>           while not predicate(): await asyncio.sleep(.01)
+                                   ^^^^^^^^^^^^^^^^^^^^^^^^
+
+tasks/g0-proxy-continuation/cold-start/tests/test_activation_service.py:43:
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+delay = 0.01, result = None
+
+    async def sleep(delay, result=None):
+        """Coroutine that completes after a given time (in seconds)."""
+        if delay <= 0:
+            await __sleep0()
+            return result
+
+        if math.isnan(delay):
+            raise ValueError("Invalid delay: NaN (not a number)")
+
+        loop = events.get_running_loop()
+        future = loop.create_future()
+        h = loop.call_later(delay,
+                            futures._set_result_unless_cancelled,
+                            future, result)
+        try:
+>           return await future
+                   ^^^^^^^^^^^^
+E           asyncio.exceptions.CancelledError
+
+/opt/homebrew/Cellar/python@3.14/3.14.3_1/Frameworks/Python.framework/Versions/3.14/lib/python3.14/asyncio/tasks.py:702: CancelledError
+
+The above exception was the direct cause of the following exception:
+
+    def test_same_profile_serializes_and_probe_does_not_consume_grant():
+        p=module()
+        async def scenario():
+            with tempfile.TemporaryDirectory(prefix='g0-auth-',dir='/private/tmp') as raw, ExitStack() as roots:
+                root=Path(raw); public=root/'p.sock'; binary=transport._process_metadata(os.getpid())[1]
+                manifest,profiles,grants=policy(root,public,binary,roots)
+                listener=socket.socket(socket.AF_UNIX,socket.SOCK_STREAM); listener.bind(str(public)); listener.listen(8)
+                proxy=p.ActivationService.from_manifest(manifest); clients=[]
+                try:
+                    for index in range(2):
+                        child=await client(binary,public,root/f'f{index}'); clients.append(child); register(grants,child,'a',binary)
+                    await proxy.start(socket.socket(fileno=os.dup(listener.fileno())))
+                    assert await ask(clients[0],'probe')=='probed'
+                    await eventually(lambda: proxy.proxy.active_frontends==1)
+                    assert proxy.backend_records==[]
+                    assert await ask(clients[0],'close_probe')=='probe-closed'
+                    await eventually(lambda: proxy.proxy.empty_probe_eofs==1)
+                    first=json.loads(await ask(clients[0],'connect'))
+                    second=asyncio.create_task(ask(clients[1],'connect'))
+                    await asyncio.sleep(.1)
+                    assert not second.done(), 'same profile spawned concurrent writers to one home'
+                    await ask(clients[0],'disconnect')
+                    next_header=json.loads(await second)
+                    assert next_header['pid']!=first['pid']
+                    await ask(clients[1],'disconnect')
+                    await eventually(lambda: all(r.get('process_stopped') for r in proxy.backend_records))
+                finally:
+                    for child in clients:
+                        if child.returncode is None: child.terminate(); await child.wait()
+                    await proxy.close(); listener.close()
+                assert len(proxy.backend_records)==2
+                expected_parent=Path(profiles['a']['backend_socket']).parent
+                assert all(Path(r['private_socket']).parent==expected_parent for r in proxy.backend_records)
+                assert all(r['process_stopped'] and r['socket_removed'] for r in proxy.backend_records)
+>       run(scenario())
+
+tasks/g0-proxy-continuation/cold-start/tests/test_activation_service.py:255:
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+tasks/g0-proxy-continuation/cold-start/tests/test_activation_service.py:91: in run
+    def run(coro): return asyncio.run(asyncio.wait_for(coro,10))
+                          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+/opt/homebrew/Cellar/python@3.14/3.14.3_1/Frameworks/Python.framework/Versions/3.14/lib/python3.14/asyncio/runners.py:204: in run
+    return runner.run(main)
+           ^^^^^^^^^^^^^^^^
+/opt/homebrew/Cellar/python@3.14/3.14.3_1/Frameworks/Python.framework/Versions/3.14/lib/python3.14/asyncio/runners.py:127: in run
+    return self._loop.run_until_complete(task)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+/opt/homebrew/Cellar/python@3.14/3.14.3_1/Frameworks/Python.framework/Versions/3.14/lib/python3.14/asyncio/base_events.py:719: in run_until_complete
+    return future.result()
+           ^^^^^^^^^^^^^^^
+/opt/homebrew/Cellar/python@3.14/3.14.3_1/Frameworks/Python.framework/Versions/3.14/lib/python3.14/asyncio/tasks.py:488: in wait_for
+    return await fut
+           ^^^^^^^^^
+tasks/g0-proxy-continuation/cold-start/tests/test_activation_service.py:237: in scenario
+    await eventually(lambda: proxy.proxy.empty_probe_eofs==1)
+tasks/g0-proxy-continuation/cold-start/tests/test_activation_service.py:42: in eventually
+    async with asyncio.timeout(3):
+               ^^^^^^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+self = <Timeout [expired]>
+exc_type = <class 'asyncio.exceptions.CancelledError'>
+exc_val = CancelledError(), exc_tb = <traceback object at 0x10728a4c0>
+
+    async def __aexit__(
+        self,
+        exc_type: type[BaseException] | None,
+        exc_val: BaseException | None,
+        exc_tb: TracebackType | None,
+    ) -> bool | None:
+        assert self._state in (_State.ENTERED, _State.EXPIRING)
+
+        if self._timeout_handler is not None:
+            self._timeout_handler.cancel()
+            self._timeout_handler = None
+
+        if self._state is _State.EXPIRING:
+            self._state = _State.EXPIRED
+
+            if self._task.uncancel() <= self._cancelling and exc_type is not None:
+                # Since there are no new cancel requests, we're
+                # handling this.
+                if issubclass(exc_type, exceptions.CancelledError):
+>                   raise TimeoutError from exc_val
+E                   TimeoutError
+
+/opt/homebrew/Cellar/python@3.14/3.14.3_1/Frameworks/Python.framework/Versions/3.14/lib/python3.14/asyncio/timeouts.py:114: TimeoutError
+=========================== short test summary info ============================
+FAILED tasks/g0-proxy-continuation/cold-start/tests/test_activation_service.py::test_same_profile_serializes_and_probe_does_not_consume_grant
+1 failed in 3.27s
+EXIT 1
+BASELINE HEAD tasks/g0-proxy-continuation/cold-start/tests/test_native_probe_integration.py
+......                                                                   [100%]
+6 passed in 10.76s
+EXIT 0

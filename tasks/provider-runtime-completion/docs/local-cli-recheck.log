@@ -1,0 +1,12 @@
+=== RUN   TestCLILocalOwnerCollectWithoutNativeBridge
+--- PASS: TestCLILocalOwnerCollectWithoutNativeBridge (1.08s)
+=== RUN   TestCLILocalOwnerCollectWithoutNativeBridge
+--- PASS: TestCLILocalOwnerCollectWithoutNativeBridge (1.12s)
+=== RUN   TestCLILocalOwnerCollectWithoutNativeBridge
+--- PASS: TestCLILocalOwnerCollectWithoutNativeBridge (1.11s)
+=== RUN   TestCLILocalOwnerCollectWithoutNativeBridge
+--- PASS: TestCLILocalOwnerCollectWithoutNativeBridge (1.11s)
+=== RUN   TestCLILocalOwnerCollectWithoutNativeBridge
+--- PASS: TestCLILocalOwnerCollectWithoutNativeBridge (1.09s)
+PASS
+ok  	codex-cli-orchestration-design/tools/orchestrator/cmd/orchestrator	5.866s

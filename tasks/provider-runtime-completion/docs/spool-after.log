@@ -1,0 +1,9 @@
+goos: darwin
+goarch: arm64
+pkg: codex-cli-orchestration-design/tools/orchestrator/internal/events
+cpu: Apple M3 Pro
+BenchmarkPendingSpool-11    	    1185	    270056 ns/op	   27032 B/op	     188 allocs/op
+BenchmarkPendingSpool-11    	    1428	    250918 ns/op	   27036 B/op	     188 allocs/op
+BenchmarkPendingSpool-11    	    1516	    255641 ns/op	   27032 B/op	     188 allocs/op
+PASS
+ok  	codex-cli-orchestration-design/tools/orchestrator/internal/events	23.623s

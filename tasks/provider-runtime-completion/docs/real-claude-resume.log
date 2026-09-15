@@ -1,0 +1,6 @@
+=== RUN   TestRealClaudeReviewerProfile
+    real_provider_test.go:46: real resume: status=unknown exit=1 error=process_tree_unknown
+--- FAIL: TestRealClaudeReviewerProfile (12.27s)
+FAIL
+FAIL	codex-cli-orchestration-design/tools/orchestrator/cmd/orchestrator	12.907s
+FAIL

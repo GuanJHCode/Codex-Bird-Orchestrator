@@ -1,0 +1,16 @@
+--- FAIL: TestOwnerRegistrationDefersForEachUnidentifiedActiveSegment (0.02s)
+    --- FAIL: TestOwnerRegistrationDefersForEachUnidentifiedActiveSegment/launch_requested (0.00s)
+        owner_grants_test.go:64: unidentified worker minted owner: err=<nil> token_created=true
+    --- FAIL: TestOwnerRegistrationDefersForEachUnidentifiedActiveSegment/prepared (0.00s)
+        owner_grants_test.go:64: unidentified worker minted owner: err=<nil> token_created=true
+    --- FAIL: TestOwnerRegistrationDefersForEachUnidentifiedActiveSegment/spawned (0.00s)
+        owner_grants_test.go:64: unidentified worker minted owner: err=<nil> token_created=true
+    --- FAIL: TestOwnerRegistrationDefersForEachUnidentifiedActiveSegment/running (0.00s)
+        owner_grants_test.go:64: unidentified worker minted owner: err=<nil> token_created=true
+    --- FAIL: TestOwnerRegistrationDefersForEachUnidentifiedActiveSegment/stopping (0.00s)
+        owner_grants_test.go:64: unidentified worker minted owner: err=<nil> token_created=true
+    --- FAIL: TestOwnerRegistrationDefersForEachUnidentifiedActiveSegment/unknown (0.00s)
+        owner_grants_test.go:64: unidentified worker minted owner: err=<nil> token_created=true
+FAIL
+FAIL	codex-cli-orchestration-design/tools/orchestrator/internal/store	0.653s
+FAIL

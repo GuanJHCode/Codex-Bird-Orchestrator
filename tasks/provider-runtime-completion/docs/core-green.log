@@ -1,0 +1,5 @@
+ok  	codex-cli-orchestration-design/tools/orchestrator/internal/adapter	0.593s
+ok  	codex-cli-orchestration-design/tools/orchestrator/internal/process	1.143s
+ok  	codex-cli-orchestration-design/tools/orchestrator/internal/host	4.731s
+ok  	codex-cli-orchestration-design/tools/orchestrator/internal/coordinator	3.169s
+ok  	codex-cli-orchestration-design/tools/orchestrator/internal/store	2.716s

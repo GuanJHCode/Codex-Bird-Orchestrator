@@ -1,0 +1,21 @@
+--- FAIL: TestCLILocalOwnerCollectWithoutNativeBridge (30.53s)
+    local_owner_test.go:65: coordinator.log:
+    local_owner_test.go:65: source-host.log:
+    local_owner_test.go:65: /tmp/local-cli-2867548244/orchestrator [status --state-dir /tmp/local-cli-2867548244/state --task-id task --control-file /tmp/local-cli-2867548244/state/control/run-b0649807093f10dfdcf03653d8661cd080ac.json]: context deadline exceeded
+FAIL
+FAIL	codex-cli-orchestration-design/tools/orchestrator/cmd/orchestrator	49.737s
+ok  	codex-cli-orchestration-design/tools/orchestrator/internal/adapter	1.843s
+ok  	codex-cli-orchestration-design/tools/orchestrator/internal/admincli	1.476s
+?   	codex-cli-orchestration-design/tools/orchestrator/internal/contract	[no test files]
+ok  	codex-cli-orchestration-design/tools/orchestrator/internal/coordinator	3.769s
+ok  	codex-cli-orchestration-design/tools/orchestrator/internal/events	0.447s
+ok  	codex-cli-orchestration-design/tools/orchestrator/internal/gitops	11.005s
+ok  	codex-cli-orchestration-design/tools/orchestrator/internal/gitopsworker	4.950s
+ok  	codex-cli-orchestration-design/tools/orchestrator/internal/host	6.805s
+ok  	codex-cli-orchestration-design/tools/orchestrator/internal/install	5.542s
+ok  	codex-cli-orchestration-design/tools/orchestrator/internal/instance	3.350s
+ok  	codex-cli-orchestration-design/tools/orchestrator/internal/ipc	4.056s
+ok  	codex-cli-orchestration-design/tools/orchestrator/internal/nativebridgecli	5.562s
+ok  	codex-cli-orchestration-design/tools/orchestrator/internal/process	3.499s
+ok  	codex-cli-orchestration-design/tools/orchestrator/internal/store	3.929s
+FAIL

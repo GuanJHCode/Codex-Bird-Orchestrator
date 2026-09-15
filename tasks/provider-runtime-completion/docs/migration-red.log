@@ -1,0 +1,6 @@
+--- FAIL: TestRuntimeSchemaMigrationIsVersionedAndAtomic (0.01s)
+    migrations_test.go:13: runtime schema not versioned: 1
+    migrations_test.go:20: partial migration survived: 1 <nil>
+FAIL
+FAIL	codex-cli-orchestration-design/tools/orchestrator/internal/store	0.653s
+FAIL

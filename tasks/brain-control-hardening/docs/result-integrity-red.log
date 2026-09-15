@@ -1,0 +1,28 @@
+--- FAIL: TestCodexOversizedMessageNeverFallsBackToEarlierAnswer (0.11s)
+    --- FAIL: TestCodexOversizedMessageNeverFallsBackToEarlierAnswer/shape-77/chunk-1 (0.03s)
+        protocol_test.go:32: terminal=adapter.Event{Kind:"result", SessionID:"s", Status:"completed", Text:"old draft"} session="s" err=<nil>; oversized final must be incomplete
+    --- FAIL: TestCodexOversizedMessageNeverFallsBackToEarlierAnswer/shape-77/chunk-127 (0.00s)
+        protocol_test.go:32: terminal=adapter.Event{Kind:"result", SessionID:"s", Status:"completed", Text:"old draft"} session="s" err=<nil>; oversized final must be incomplete
+    --- FAIL: TestCodexOversizedMessageNeverFallsBackToEarlierAnswer/shape-77/chunk-4096 (0.00s)
+        protocol_test.go:32: terminal=adapter.Event{Kind:"result", SessionID:"s", Status:"completed", Text:"old draft"} session="s" err=<nil>; oversized final must be incomplete
+    --- FAIL: TestCodexOversizedMessageNeverFallsBackToEarlierAnswer/shape-77/chunk-65536 (0.00s)
+        protocol_test.go:32: terminal=adapter.Event{Kind:"result", SessionID:"s", Status:"completed", Text:"old draft"} session="s" err=<nil>; oversized final must be incomplete
+    --- FAIL: TestCodexOversizedMessageNeverFallsBackToEarlierAnswer/shape-17/chunk-1 (0.03s)
+        protocol_test.go:32: terminal=adapter.Event{Kind:"result", SessionID:"s", Status:"completed", Text:"old draft"} session="s" err=<nil>; oversized final must be incomplete
+    --- FAIL: TestCodexOversizedMessageNeverFallsBackToEarlierAnswer/shape-17/chunk-127 (0.00s)
+        protocol_test.go:32: terminal=adapter.Event{Kind:"result", SessionID:"s", Status:"completed", Text:"old draft"} session="s" err=<nil>; oversized final must be incomplete
+    --- FAIL: TestCodexOversizedMessageNeverFallsBackToEarlierAnswer/shape-17/chunk-4096 (0.00s)
+        protocol_test.go:32: terminal=adapter.Event{Kind:"result", SessionID:"s", Status:"completed", Text:"old draft"} session="s" err=<nil>; oversized final must be incomplete
+    --- FAIL: TestCodexOversizedMessageNeverFallsBackToEarlierAnswer/shape-17/chunk-65536 (0.00s)
+        protocol_test.go:32: terminal=adapter.Event{Kind:"result", SessionID:"s", Status:"completed", Text:"old draft"} session="s" err=<nil>; oversized final must be incomplete
+    --- FAIL: TestCodexOversizedMessageNeverFallsBackToEarlierAnswer/shape-82/chunk-1 (0.04s)
+        protocol_test.go:32: terminal=adapter.Event{Kind:"result", SessionID:"s", Status:"completed", Text:"old draft"} session="s" err=<nil>; oversized final must be incomplete
+    --- FAIL: TestCodexOversizedMessageNeverFallsBackToEarlierAnswer/shape-82/chunk-127 (0.00s)
+        protocol_test.go:32: terminal=adapter.Event{Kind:"result", SessionID:"s", Status:"completed", Text:"old draft"} session="s" err=<nil>; oversized final must be incomplete
+    --- FAIL: TestCodexOversizedMessageNeverFallsBackToEarlierAnswer/shape-82/chunk-4096 (0.00s)
+        protocol_test.go:32: terminal=adapter.Event{Kind:"result", SessionID:"s", Status:"completed", Text:"old draft"} session="s" err=<nil>; oversized final must be incomplete
+    --- FAIL: TestCodexOversizedMessageNeverFallsBackToEarlierAnswer/shape-82/chunk-65536 (0.00s)
+        protocol_test.go:32: terminal=adapter.Event{Kind:"result", SessionID:"s", Status:"completed", Text:"old draft"} session="s" err=<nil>; oversized final must be incomplete
+FAIL
+FAIL	codex-cli-orchestration-design/tools/orchestrator/internal/host	0.746s
+FAIL

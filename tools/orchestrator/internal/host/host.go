@@ -1,6 +1,7 @@
 package host
 
 import (
+	"codex-cli-orchestration-design/tools/orchestrator/internal/adapter"
 	"codex-cli-orchestration-design/tools/orchestrator/internal/contract"
 	"codex-cli-orchestration-design/tools/orchestrator/internal/events"
 	"codex-cli-orchestration-design/tools/orchestrator/internal/process"
@@ -83,6 +84,20 @@ func (h *Host) ExecuteLaunch(ctx context.Context, grant contract.LaunchCommand, 
 	}
 	now := time.Now()
 	budgetDeadline := now.Add(time.Duration(grant.GrantedActiveMS) * time.Millisecond)
+	var profile *adapter.ExecutionProfile
+	if profiled, ok := inv.(interface {
+		ExecutionProfile() *adapter.ExecutionProfile
+	}); ok {
+		profile = profiled.ExecutionProfile()
+	}
+	if profile != nil {
+		if profile.TimeoutMS < 1 || profile.TimeoutMS > 3_600_000 {
+			return contract.Result{}, errors.New("profile_timeout_invalid")
+		}
+		if deadline := now.Add(time.Duration(profile.TimeoutMS) * time.Millisecond); deadline.Before(budgetDeadline) {
+			budgetDeadline = deadline
+		}
+	}
 	if grant.DeadlineUnixMS > 0 {
 		deadline := time.UnixMilli(grant.DeadlineUnixMS)
 		if deadline.Before(budgetDeadline) {
@@ -105,7 +120,15 @@ func (h *Host) ExecuteLaunch(ctx context.Context, grant contract.LaunchCommand, 
 	if structured, ok := inv.(interface{ OutputProvider() string }); ok {
 		meta.outputProvider = structured.OutputProvider()
 	}
-	return h.execute(runCtx, store.Attempt{ID: grant.AttemptID, TaskID: grant.TaskID, SegmentID: grant.SegmentID, Status: "running"}, grant.RunID, grant.TaskID, invocationCommand(inv), false, meta)
+	cmd := invocationCommand(inv)
+	if profile != nil {
+		var err error
+		cmd, err = sandboxCommand(runCtx, cmd, profile, filepath.Join(h.spoolRoot, grant.AttemptID, grant.SegmentID, "scratch"))
+		if err != nil {
+			return contract.Result{}, err
+		}
+	}
+	return h.execute(runCtx, store.Attempt{ID: grant.AttemptID, TaskID: grant.TaskID, SegmentID: grant.SegmentID, Status: "running"}, grant.RunID, grant.TaskID, cmd, false, meta)
 }
 
 func invocationCommand(inv contract.InvocationView) process.Command {
@@ -115,7 +138,11 @@ func invocationCommand(inv contract.InvocationView) process.Command {
 	for k, v := range envMap {
 		env = append(env, k+"="+v)
 	}
-	return process.Command{Path: args[0], Args: append([]string(nil), args[1:]...), Dir: inv.WorkingDirectory(), Env: env, Stdin: append([]byte(nil), inv.Stdin()...)}
+	var pinnedPath, pinnedSHA string
+	if pinned, ok := inv.(interface{ ExecutablePin() (string, string) }); ok {
+		pinnedPath, pinnedSHA = pinned.ExecutablePin()
+	}
+	return process.Command{PinnedPath: pinnedPath, PinnedSHA256: pinnedSHA, Path: args[0], Args: append([]string(nil), args[1:]...), Dir: inv.WorkingDirectory(), Env: env, Stdin: append([]byte(nil), inv.Stdin()...)}
 }
 
 func (h *Host) Execute(ctx context.Context, a store.Attempt, runID, taskID string, cmd process.Command) (contract.Result, error) {
@@ -293,6 +320,11 @@ func (h *Host) execute(ctx context.Context, a store.Attempt, runID, taskID strin
 			kind, status = contract.EventQuestion, "waiting_user"
 		}
 		content := []byte(terminal.Text)
+		if protocolErr != nil && protocolErr.Error() == "provider_critical_event_too_large" {
+			// Keep an actionable, bounded failure artifact in the durable event
+			// path. Never publish an earlier message as a partial final answer.
+			content = []byte(`{"status":"incomplete","reason":"provider_critical_event_too_large"}`)
+		}
 		var artifact *contract.ArtifactRef
 		artifactPath := ""
 		if len(content) > 0 {

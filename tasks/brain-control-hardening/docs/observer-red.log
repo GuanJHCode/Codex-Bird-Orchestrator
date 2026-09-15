@@ -1,0 +1,8 @@
+--- FAIL: TestProtocolLateObserverSeparatesOutputFailureFromPersistenceFailure (0.00s)
+    --- FAIL: TestProtocolLateObserverSeparatesOutputFailureFromPersistenceFailure/false (0.00s)
+        protocol_test.go:28: observer calls=0 err=provider_critical_event_too_large
+    --- FAIL: TestProtocolLateObserverSeparatesOutputFailureFromPersistenceFailure/true (0.00s)
+        protocol_test.go:28: observer calls=0 err=provider_critical_event_too_large
+FAIL
+FAIL	codex-cli-orchestration-design/tools/orchestrator/internal/host	0.654s
+FAIL

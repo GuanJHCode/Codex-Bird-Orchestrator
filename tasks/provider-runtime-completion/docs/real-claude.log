@@ -1,0 +1,5 @@
+=== RUN   TestRealClaudeReviewerProfile
+    real_provider_test.go:37: real 2.1.267 (Claude Code): final marker verified under reviewer sandbox
+--- PASS: TestRealClaudeReviewerProfile (7.87s)
+PASS
+ok  	codex-cli-orchestration-design/tools/orchestrator/cmd/orchestrator	8.529s

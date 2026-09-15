@@ -1,0 +1,12 @@
+--- FAIL: TestProfileControlsModelReasoningAndRole (0.00s)
+    profile_test.go:21: profile not applied: /private/bin/agent -p --output-format stream-json --input-format stream-json --verbose --include-partial-messages --permission-mode plan
+--- FAIL: TestProfileRejectsUnknownOrExpandedConfiguration (0.00s)
+    profile_test.go:33: accepted unsupported profile: {"version":2,"role":"reviewer","permission":"read-only","timeout_ms":9000}
+    profile_test.go:33: accepted unsupported profile: {"version":1,"role":"worker","permission":"read-only","timeout_ms":9000}
+    profile_test.go:33: accepted unsupported profile: {"version":1,"role":"reviewer","permission":"workspace-write","timeout_ms":9000}
+    profile_test.go:33: accepted unsupported profile: {"version":1,"role":"reviewer","permission":"read-only","reasoning":"unlimited","timeout_ms":9000}
+    profile_test.go:33: accepted unsupported profile: {"version":1,"role":"reviewer","permission":"read-only","model":"--yolo","timeout_ms":9000}
+    profile_test.go:33: accepted unsupported profile: {"version":1,"role":"reviewer","permission":"read-only","timeout_ms":0}
+FAIL
+FAIL	codex-cli-orchestration-design/tools/orchestrator/internal/adapter	0.595s
+FAIL

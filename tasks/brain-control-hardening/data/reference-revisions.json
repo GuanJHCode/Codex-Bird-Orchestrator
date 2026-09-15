@@ -1,0 +1,42 @@
+[
+  {
+    "requested_repo": "backnotprop/orchestrator",
+    "canonical_repo": "backnotprop/orchestrator",
+    "default_branch": "main",
+    "head_sha": "583acf4b469b91131f96ae2136797749c788b4c7",
+    "commit_date": "2026-07-10T03:11:50Z",
+    "license_url": "https://github.com/backnotprop/orchestrator/blob/583acf4b469b91131f96ae2136797749c788b4c7/LICENSE",
+    "license_sha256": "e0e6de5f4325c2ed3e3633a034d1652bae4ad4f4bba165e1afd2585b88d44183",
+    "license_heading": "Business Source License 1.1"
+  },
+  {
+    "requested_repo": "BeehiveInnovations/pal-mcp-server",
+    "canonical_repo": "BeehiveInnovations/pal-mcp-server",
+    "default_branch": "main",
+    "head_sha": "7afc7c1cc96e23992c8f105f960132c657883bb1",
+    "commit_date": "2025-12-15T17:07:31Z",
+    "license_url": "https://github.com/BeehiveInnovations/pal-mcp-server/blob/7afc7c1cc96e23992c8f105f960132c657883bb1/LICENSE",
+    "license_sha256": "06c5302b668e8339e2fec2bc4ddd2a0b6cbc3355da4cd2ac24afeeaf08b2bd0c",
+    "license_heading": "Apache License"
+  },
+  {
+    "requested_repo": "steveyegge/gastown",
+    "canonical_repo": "gastownhall/gastown",
+    "default_branch": "main",
+    "head_sha": "649b832b7672bc7a2dbef26f5983aba6198b819b",
+    "commit_date": "2026-07-23T13:03:02Z",
+    "license_url": "https://github.com/gastownhall/gastown/blob/649b832b7672bc7a2dbef26f5983aba6198b819b/LICENSE",
+    "license_sha256": "6141d15e761ef772bdd45fdd4036dfc1f97488011429e6643e1445afa9d22f4d",
+    "license_heading": "MIT License"
+  },
+  {
+    "requested_repo": "Dicklesworthstone/mcp_agent_mail",
+    "canonical_repo": "Dicklesworthstone/mcp_agent_mail",
+    "default_branch": "main",
+    "head_sha": "ac4966c64d7e39692a4fb9c707448a1718ab29db",
+    "commit_date": "2026-09-06T05:06:26Z",
+    "license_url": "https://github.com/Dicklesworthstone/mcp_agent_mail/blob/ac4966c64d7e39692a4fb9c707448a1718ab29db/LICENSE",
+    "license_sha256": "32a82e0a5754e72e51fae44b65a936c831c07376f21c90f5fb9e76897fcc3509",
+    "license_heading": "MIT License (with OpenAI/Anthropic Rider)"
+  }
+]

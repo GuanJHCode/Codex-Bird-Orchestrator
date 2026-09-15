@@ -1,0 +1,5 @@
+--- FAIL: TestSummaryPersistsOwnerScopeAndDoesNotDispatch (0.03s)
+    summary_test.go:43: unsupported_request
+FAIL
+FAIL	codex-cli-orchestration-design/tools/orchestrator/internal/coordinator	0.743s
+FAIL

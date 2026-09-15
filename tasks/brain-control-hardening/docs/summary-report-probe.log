@@ -1,0 +1,5 @@
+--- FAIL: TestSummaryIncludesRetryForDurableWorkerFailure (0.03s)
+    summary_test.go:49: retry itself not eligible: conflict
+FAIL
+FAIL	codex-cli-orchestration-design/tools/orchestrator/internal/store	0.711s
+FAIL

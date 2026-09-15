@@ -1,0 +1,8 @@
+--- FAIL: TestProfileSandboxEnforcesReviewerAndIsolatedImplementer (0.33s)
+    --- FAIL: TestProfileSandboxEnforcesReviewerAndIsolatedImplementer/reviewer (0.08s)
+        profile_test.go:31: outside write escaped sandbox: <nil>
+    --- FAIL: TestProfileSandboxEnforcesReviewerAndIsolatedImplementer/implementer (0.07s)
+        profile_test.go:31: outside write escaped sandbox: <nil>
+FAIL
+FAIL	codex-cli-orchestration-design/tools/orchestrator/internal/host	1.038s
+FAIL

@@ -1,0 +1,9 @@
+--- FAIL: TestStructuredProviderTerminalControlsOutcome (0.06s)
+    --- FAIL: TestStructuredProviderTerminalControlsOutcome/codex_oversized_final (0.06s)
+        host_test.go:275: provider_critical_event_too_large
+--- FAIL: TestCodexProtocolRejectsSequenceAndTerminalViolations (0.00s)
+    --- FAIL: TestCodexProtocolRejectsSequenceAndTerminalViolations/empty_final_replaces_draft (0.00s)
+        protocol_test.go:104: err=event_text_invalid want="provider_result_missing"
+FAIL
+FAIL	codex-cli-orchestration-design/tools/orchestrator/internal/host	0.735s
+FAIL

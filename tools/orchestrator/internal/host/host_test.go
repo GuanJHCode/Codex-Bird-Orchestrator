@@ -238,6 +238,11 @@ func TestStructuredProviderTerminalControlsOutcome(t *testing.T) {
 			_, _ = os.Stdout.WriteString(`{"type":"text","sessionId":"grok-session","data":"hello "}` + "\n")
 			_, _ = os.Stdout.WriteString(`{"type":"text","sessionId":"grok-session","data":"world"}` + "\n")
 			_, _ = os.Stdout.WriteString(`{"type":"end","sessionId":"grok-session","stopReason":"end_turn"}` + "\n")
+		case "codex-oversized":
+			_, _ = os.Stdout.WriteString(`{"type":"thread.started","thread_id":"codex-session"}` + "\n")
+			_, _ = os.Stdout.WriteString(`{"type":"item.completed","item":{"id":"draft","type":"agent_message","text":"old draft"}}` + "\n")
+			_, _ = os.Stdout.WriteString(`{"type":"item.completed","item":{"id":"final","type":"agent_message","text":"` + strings.Repeat("x", providerEventLimit+1) + `"}}` + "\n")
+			_, _ = os.Stdout.WriteString(`{"type":"turn.completed","usage":{"input_tokens":7,"cached_input_tokens":3,"cache_write_input_tokens":0,"output_tokens":2,"reasoning_output_tokens":1}}` + "\n")
 		}
 		os.Exit(0)
 	}
@@ -254,6 +259,7 @@ func TestStructuredProviderTerminalControlsOutcome(t *testing.T) {
 		{"missing terminal", "missing-terminal", "claude-code", "failed", contract.EventFailed, "session-id", "claude-session", ""},
 		{"nonzero", "nonzero", "claude-code", "failed", contract.EventFailed, "session-id", "claude-session", "structured answer"},
 		{"grok stream", "grok-stream", "grok-build", "result_ready", contract.EventResult, "session-id", "grok-session", "hello world"},
+		{"codex oversized final", "codex-oversized", "codex-cli", "failed", contract.EventFailed, "session-id", "codex-session", `{"status":"incomplete","reason":"provider_critical_event_too_large"}`},
 	}
 	for index, tc := range tests {
 		t.Run(tc.name, func(t *testing.T) {

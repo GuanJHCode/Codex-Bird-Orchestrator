@@ -1,0 +1,5 @@
+--- FAIL: TestUnidentifiedLaunchCannotEnrollThroughNativeSubmit (0.20s)
+    local_owner_test.go:175: unidentified launch allowed submit: {"status":"queued","run_id":"bypass","launch_id":"host-launch-0dfb0ae982ac0a1ddf3b23d9","test_token":"[redacted]","test_token":"[redacted]"} <nil>
+FAIL
+FAIL	codex-cli-orchestration-design/tools/orchestrator/internal/coordinator	0.832s
+FAIL

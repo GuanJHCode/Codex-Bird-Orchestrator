@@ -25,12 +25,14 @@ func (e CodeError) Error() string { return string(e) }
 const ErrProcessTreeUnknown CodeError = "process_tree_unknown"
 
 type Command struct {
-	Path   string
-	Args   []string
-	Dir    string
-	Env    []string
-	Stdin  []byte
-	Stdout io.Writer
+	PinnedPath   string
+	PinnedSHA256 string
+	Path         string
+	Args         []string
+	Dir          string
+	Env          []string
+	Stdin        []byte
+	Stdout       io.Writer
 }
 type Identity struct {
 	PID              int
@@ -110,6 +112,15 @@ func Start(ctx context.Context, spec Command) (*Handle, error) {
 	h := &Handle{cmd: cmd, done: make(chan struct{}), exit: -1, outputLimit: 1024 * 1024, stdout: spec.Stdout}
 	cmd.Stdout = captureWriter{h: h, stdout: true}
 	cmd.Stderr = captureWriter{h: h}
+	// Recheck the provider after all wrappers/probes have been assembled. The
+	// wrapper executable's own identity is separate from the provider lock.
+	if spec.PinnedPath != "" || spec.PinnedSHA256 != "" {
+		canonical, pinErr := filepath.EvalSymlinks(spec.PinnedPath)
+		actual, hashErr := executableDigest(spec.PinnedPath)
+		if pinErr != nil || canonical != spec.PinnedPath || hashErr != nil || !strings.EqualFold(actual, spec.PinnedSHA256) {
+			return nil, CodeError("binary_pin_mismatch")
+		}
+	}
 	if err := cmd.Start(); err != nil {
 		return nil, err
 	}

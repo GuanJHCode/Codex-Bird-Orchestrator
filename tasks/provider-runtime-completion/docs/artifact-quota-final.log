@@ -1,0 +1,12 @@
+=== RUN   TestReportArtifactRejectsOversizedFile
+--- PASS: TestReportArtifactRejectsOversizedFile (0.01s)
+=== RUN   TestAcceptedArtifactsConsumeTransactionalQuota
+--- PASS: TestAcceptedArtifactsConsumeTransactionalQuota (0.03s)
+=== RUN   TestCollectionReceiptExcludesNonActionableDiagnostics
+--- PASS: TestCollectionReceiptExcludesNonActionableDiagnostics (0.02s)
+=== RUN   TestQuotaCountersTrackUpdateDeleteAndRollback
+--- PASS: TestQuotaCountersTrackUpdateDeleteAndRollback (0.02s)
+=== RUN   TestQuotaMigrationBackfillsReportAndRuntimeUsage
+--- PASS: TestQuotaMigrationBackfillsReportAndRuntimeUsage (0.05s)
+PASS
+ok  	codex-cli-orchestration-design/tools/orchestrator/internal/store	0.972s

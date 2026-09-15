@@ -1,0 +1,5 @@
+--- FAIL: TestLocalOwnerBindingDoesNotRequireNativeReturnTransport (0.02s)
+    local_owner_test.go:20: server error: {"error":"unsupported_request"}
+FAIL
+FAIL	codex-cli-orchestration-design/tools/orchestrator/internal/coordinator	0.693s
+FAIL

@@ -1,0 +1,17 @@
+F                                                                        [100%]
+=================================== FAILURES ===================================
+_______ test_deep_json_is_bounded_by_parser_failure_and_emits_no_payload _______
+
+    def test_deep_json_is_bounded_by_parser_failure_and_emits_no_payload():
+        observer = connected_observer()
+        payload = b"[" * 10000 + b"]" * 10000
+        observer.feed("c1", "client", frame(payload, masked=True))
+        rows = events(observer)
+>       assert any(row.get("event") == "gap" and row.get("reason") == "invalid_json" for row in rows)
+E       assert False
+E        +  where False = any(<generator object test_deep_json_is_bounded_by_parser_failure_and_emits_no_payload.<locals>.<genexpr> at 0x10b90cf20>)
+
+tasks/provider-runtime-completion/tmp/baseline-runtime/tasks/g0-tui-proxy/tests/test_proxy_observer.py:371: AssertionError
+=========================== short test summary info ============================
+FAILED tasks/provider-runtime-completion/tmp/baseline-runtime/tasks/g0-tui-proxy/tests/test_proxy_observer.py::test_deep_json_is_bounded_by_parser_failure_and_emits_no_payload
+1 failed in 0.07s

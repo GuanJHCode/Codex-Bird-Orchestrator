@@ -1,0 +1,194 @@
+FFFFF.                                                                   [100%]
+=================================== FAILURES ===================================
+_______ test_package_rejects_unusable_declared_skills[missing-directory] _______
+
+tmp_path = PosixPath('/private/var/folders/y_/9wqjj5ws6v9ggszdzytmxdlc0000gn/T/pytest-of-guanjunhui/pytest-2889/test_package_rejects_unusable_0')
+fault = 'missing-directory'
+
+    @pytest.mark.parametrize("fault", ["missing-directory", "empty-directory", "traversal", "symlink-directory", "symlink-file"])
+    def test_package_rejects_unusable_declared_skills(tmp_path, fault):
+        root = tmp_path / "repo"
+        (root / SCRIPT).parent.mkdir(parents=True)
+        shutil.copy2(REPO / SCRIPT, root / SCRIPT)
+        shutil.copytree(REPO / PLUGIN, root / PLUGIN)
+        skill_root = root / PLUGIN / "skills"
+        skill = skill_root / "orchestrate/SKILL.md"
+        manifest = root / PLUGIN / ".codex-plugin/plugin.json"
+        if fault == "missing-directory":
+            shutil.rmtree(skill_root)
+        elif fault == "empty-directory":
+            skill.unlink()
+        elif fault == "traversal":
+            value = json.loads(manifest.read_text())
+            value["skills"] = "../../outside"
+            manifest.write_text(json.dumps(value))
+        elif fault == "symlink-directory":
+            shutil.move(skill_root, root / "outside")
+            skill_root.symlink_to(root / "outside", target_is_directory=True)
+        elif fault == "symlink-file":
+            shutil.move(skill, root / "outside.md")
+            skill.symlink_to(root / "outside.md")
+        result = package(root, tmp_path / "package")
+        assert result.returncode != 0
+>       assert "plugin_skills_invalid" in result.stderr, result.stderr
+E       AssertionError: g0_runtime_source_unsafe:projectproxy_launchd_entrypoint.py
+E
+E       assert 'plugin_skills_invalid' in 'g0_runtime_source_unsafe:projectproxy_launchd_entrypoint.py\n'
+E        +  where 'g0_runtime_source_unsafe:projectproxy_launchd_entrypoint.py\n' = CompletedProcess(args=['/bin/sh', '/private/var/folders/y_/9wqjj5ws6v9ggszdzytmxdlc0000gn/T/pytest-of-guanjunhui/pytes..._unusable_0/package'], returncode=1, stdout='', stderr='g0_runtime_source_unsafe:projectproxy_launchd_entrypoint.py\n').stderr
+
+tasks/brain-control-hardening/scripts/test_package_skills.py:49: AssertionError
+________ test_package_rejects_unusable_declared_skills[empty-directory] ________
+
+tmp_path = PosixPath('/private/var/folders/y_/9wqjj5ws6v9ggszdzytmxdlc0000gn/T/pytest-of-guanjunhui/pytest-2889/test_package_rejects_unusable_1')
+fault = 'empty-directory'
+
+    @pytest.mark.parametrize("fault", ["missing-directory", "empty-directory", "traversal", "symlink-directory", "symlink-file"])
+    def test_package_rejects_unusable_declared_skills(tmp_path, fault):
+        root = tmp_path / "repo"
+        (root / SCRIPT).parent.mkdir(parents=True)
+        shutil.copy2(REPO / SCRIPT, root / SCRIPT)
+        shutil.copytree(REPO / PLUGIN, root / PLUGIN)
+        skill_root = root / PLUGIN / "skills"
+        skill = skill_root / "orchestrate/SKILL.md"
+        manifest = root / PLUGIN / ".codex-plugin/plugin.json"
+        if fault == "missing-directory":
+            shutil.rmtree(skill_root)
+        elif fault == "empty-directory":
+            skill.unlink()
+        elif fault == "traversal":
+            value = json.loads(manifest.read_text())
+            value["skills"] = "../../outside"
+            manifest.write_text(json.dumps(value))
+        elif fault == "symlink-directory":
+            shutil.move(skill_root, root / "outside")
+            skill_root.symlink_to(root / "outside", target_is_directory=True)
+        elif fault == "symlink-file":
+            shutil.move(skill, root / "outside.md")
+            skill.symlink_to(root / "outside.md")
+        result = package(root, tmp_path / "package")
+        assert result.returncode != 0
+>       assert "plugin_skills_invalid" in result.stderr, result.stderr
+E       AssertionError: g0_runtime_source_unsafe:projectproxy_launchd_entrypoint.py
+E
+E       assert 'plugin_skills_invalid' in 'g0_runtime_source_unsafe:projectproxy_launchd_entrypoint.py\n'
+E        +  where 'g0_runtime_source_unsafe:projectproxy_launchd_entrypoint.py\n' = CompletedProcess(args=['/bin/sh', '/private/var/folders/y_/9wqjj5ws6v9ggszdzytmxdlc0000gn/T/pytest-of-guanjunhui/pytes..._unusable_1/package'], returncode=1, stdout='', stderr='g0_runtime_source_unsafe:projectproxy_launchd_entrypoint.py\n').stderr
+
+tasks/brain-control-hardening/scripts/test_package_skills.py:49: AssertionError
+___________ test_package_rejects_unusable_declared_skills[traversal] ___________
+
+tmp_path = PosixPath('/private/var/folders/y_/9wqjj5ws6v9ggszdzytmxdlc0000gn/T/pytest-of-guanjunhui/pytest-2889/test_package_rejects_unusable_2')
+fault = 'traversal'
+
+    @pytest.mark.parametrize("fault", ["missing-directory", "empty-directory", "traversal", "symlink-directory", "symlink-file"])
+    def test_package_rejects_unusable_declared_skills(tmp_path, fault):
+        root = tmp_path / "repo"
+        (root / SCRIPT).parent.mkdir(parents=True)
+        shutil.copy2(REPO / SCRIPT, root / SCRIPT)
+        shutil.copytree(REPO / PLUGIN, root / PLUGIN)
+        skill_root = root / PLUGIN / "skills"
+        skill = skill_root / "orchestrate/SKILL.md"
+        manifest = root / PLUGIN / ".codex-plugin/plugin.json"
+        if fault == "missing-directory":
+            shutil.rmtree(skill_root)
+        elif fault == "empty-directory":
+            skill.unlink()
+        elif fault == "traversal":
+            value = json.loads(manifest.read_text())
+            value["skills"] = "../../outside"
+            manifest.write_text(json.dumps(value))
+        elif fault == "symlink-directory":
+            shutil.move(skill_root, root / "outside")
+            skill_root.symlink_to(root / "outside", target_is_directory=True)
+        elif fault == "symlink-file":
+            shutil.move(skill, root / "outside.md")
+            skill.symlink_to(root / "outside.md")
+        result = package(root, tmp_path / "package")
+        assert result.returncode != 0
+>       assert "plugin_skills_invalid" in result.stderr, result.stderr
+E       AssertionError: g0_runtime_source_unsafe:projectproxy_launchd_entrypoint.py
+E
+E       assert 'plugin_skills_invalid' in 'g0_runtime_source_unsafe:projectproxy_launchd_entrypoint.py\n'
+E        +  where 'g0_runtime_source_unsafe:projectproxy_launchd_entrypoint.py\n' = CompletedProcess(args=['/bin/sh', '/private/var/folders/y_/9wqjj5ws6v9ggszdzytmxdlc0000gn/T/pytest-of-guanjunhui/pytes..._unusable_2/package'], returncode=1, stdout='', stderr='g0_runtime_source_unsafe:projectproxy_launchd_entrypoint.py\n').stderr
+
+tasks/brain-control-hardening/scripts/test_package_skills.py:49: AssertionError
+_______ test_package_rejects_unusable_declared_skills[symlink-directory] _______
+
+tmp_path = PosixPath('/private/var/folders/y_/9wqjj5ws6v9ggszdzytmxdlc0000gn/T/pytest-of-guanjunhui/pytest-2889/test_package_rejects_unusable_3')
+fault = 'symlink-directory'
+
+    @pytest.mark.parametrize("fault", ["missing-directory", "empty-directory", "traversal", "symlink-directory", "symlink-file"])
+    def test_package_rejects_unusable_declared_skills(tmp_path, fault):
+        root = tmp_path / "repo"
+        (root / SCRIPT).parent.mkdir(parents=True)
+        shutil.copy2(REPO / SCRIPT, root / SCRIPT)
+        shutil.copytree(REPO / PLUGIN, root / PLUGIN)
+        skill_root = root / PLUGIN / "skills"
+        skill = skill_root / "orchestrate/SKILL.md"
+        manifest = root / PLUGIN / ".codex-plugin/plugin.json"
+        if fault == "missing-directory":
+            shutil.rmtree(skill_root)
+        elif fault == "empty-directory":
+            skill.unlink()
+        elif fault == "traversal":
+            value = json.loads(manifest.read_text())
+            value["skills"] = "../../outside"
+            manifest.write_text(json.dumps(value))
+        elif fault == "symlink-directory":
+            shutil.move(skill_root, root / "outside")
+            skill_root.symlink_to(root / "outside", target_is_directory=True)
+        elif fault == "symlink-file":
+            shutil.move(skill, root / "outside.md")
+            skill.symlink_to(root / "outside.md")
+        result = package(root, tmp_path / "package")
+        assert result.returncode != 0
+>       assert "plugin_skills_invalid" in result.stderr, result.stderr
+E       AssertionError: g0_runtime_source_unsafe:projectproxy_launchd_entrypoint.py
+E
+E       assert 'plugin_skills_invalid' in 'g0_runtime_source_unsafe:projectproxy_launchd_entrypoint.py\n'
+E        +  where 'g0_runtime_source_unsafe:projectproxy_launchd_entrypoint.py\n' = CompletedProcess(args=['/bin/sh', '/private/var/folders/y_/9wqjj5ws6v9ggszdzytmxdlc0000gn/T/pytest-of-guanjunhui/pytes..._unusable_3/package'], returncode=1, stdout='', stderr='g0_runtime_source_unsafe:projectproxy_launchd_entrypoint.py\n').stderr
+
+tasks/brain-control-hardening/scripts/test_package_skills.py:49: AssertionError
+_________ test_package_rejects_unusable_declared_skills[symlink-file] __________
+
+tmp_path = PosixPath('/private/var/folders/y_/9wqjj5ws6v9ggszdzytmxdlc0000gn/T/pytest-of-guanjunhui/pytest-2889/test_package_rejects_unusable_4')
+fault = 'symlink-file'
+
+    @pytest.mark.parametrize("fault", ["missing-directory", "empty-directory", "traversal", "symlink-directory", "symlink-file"])
+    def test_package_rejects_unusable_declared_skills(tmp_path, fault):
+        root = tmp_path / "repo"
+        (root / SCRIPT).parent.mkdir(parents=True)
+        shutil.copy2(REPO / SCRIPT, root / SCRIPT)
+        shutil.copytree(REPO / PLUGIN, root / PLUGIN)
+        skill_root = root / PLUGIN / "skills"
+        skill = skill_root / "orchestrate/SKILL.md"
+        manifest = root / PLUGIN / ".codex-plugin/plugin.json"
+        if fault == "missing-directory":
+            shutil.rmtree(skill_root)
+        elif fault == "empty-directory":
+            skill.unlink()
+        elif fault == "traversal":
+            value = json.loads(manifest.read_text())
+            value["skills"] = "../../outside"
+            manifest.write_text(json.dumps(value))
+        elif fault == "symlink-directory":
+            shutil.move(skill_root, root / "outside")
+            skill_root.symlink_to(root / "outside", target_is_directory=True)
+        elif fault == "symlink-file":
+            shutil.move(skill, root / "outside.md")
+            skill.symlink_to(root / "outside.md")
+        result = package(root, tmp_path / "package")
+        assert result.returncode != 0
+>       assert "plugin_skills_invalid" in result.stderr, result.stderr
+E       AssertionError: g0_runtime_source_unsafe:projectproxy_launchd_entrypoint.py
+E
+E       assert 'plugin_skills_invalid' in 'g0_runtime_source_unsafe:projectproxy_launchd_entrypoint.py\n'
+E        +  where 'g0_runtime_source_unsafe:projectproxy_launchd_entrypoint.py\n' = CompletedProcess(args=['/bin/sh', '/private/var/folders/y_/9wqjj5ws6v9ggszdzytmxdlc0000gn/T/pytest-of-guanjunhui/pytes..._unusable_4/package'], returncode=1, stdout='', stderr='g0_runtime_source_unsafe:projectproxy_launchd_entrypoint.py\n').stderr
+
+tasks/brain-control-hardening/scripts/test_package_skills.py:49: AssertionError
+=========================== short test summary info ============================
+FAILED tasks/brain-control-hardening/scripts/test_package_skills.py::test_package_rejects_unusable_declared_skills[missing-directory]
+FAILED tasks/brain-control-hardening/scripts/test_package_skills.py::test_package_rejects_unusable_declared_skills[empty-directory]
+FAILED tasks/brain-control-hardening/scripts/test_package_skills.py::test_package_rejects_unusable_declared_skills[traversal]
+FAILED tasks/brain-control-hardening/scripts/test_package_skills.py::test_package_rejects_unusable_declared_skills[symlink-directory]
+FAILED tasks/brain-control-hardening/scripts/test_package_skills.py::test_package_rejects_unusable_declared_skills[symlink-file]
+5 failed, 1 passed in 0.55s

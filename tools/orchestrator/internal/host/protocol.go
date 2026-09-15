@@ -18,6 +18,8 @@ type protocolCollector struct {
 	line            []byte
 	oversized       bool
 	critical        bool
+	structured      bool
+	contentObserved bool
 	markerTail      []byte
 	err             error
 	terminal        *adapter.Event
@@ -25,6 +27,7 @@ type protocolCollector struct {
 	message         []byte
 	droppedOversize int
 	onSession       func(string, string) error
+	observerErr     error
 	sessionObserved bool
 	sessionReported bool
 }
@@ -67,6 +70,12 @@ func (p *protocolCollector) consumePart(part []byte) {
 		}
 		chunk := part[:length]
 		part = part[length:]
+		if !p.contentObserved {
+			if content := bytes.TrimSpace(chunk); len(content) > 0 {
+				p.contentObserved = true
+				p.structured = content[0] == '{'
+			}
+		}
 		probe := make([]byte, 0, len(p.markerTail)+len(chunk))
 		probe = append(probe, p.markerTail...)
 		probe = append(probe, chunk...)
@@ -104,7 +113,11 @@ func (p *protocolCollector) consumePart(part []byte) {
 func (p *protocolCollector) finishLine() {
 	if p.err == nil {
 		if p.oversized {
-			if p.critical {
+			// Codex item.completed carries the answer, separately from the
+			// terminal. A bounded prefix cannot establish that a structured
+			// record is disposable: fields may be reordered or escaped. Fail
+			// closed for oversized Codex JSON, while raw diagnostics can drain.
+			if p.critical || (p.provider == adapter.ProviderCodex && p.structured) {
 				p.err = errors.New("provider_critical_event_too_large")
 			} else {
 				p.droppedOversize++
@@ -125,6 +138,8 @@ func (p *protocolCollector) finishLine() {
 	p.markerTail = p.markerTail[:0]
 	p.oversized = false
 	p.critical = false
+	p.structured = false
+	p.contentObserved = false
 }
 
 func (p *protocolCollector) accept(event adapter.Event) {
@@ -197,14 +212,17 @@ func (p *protocolCollector) SetSessionObserver(observer func(string, string) err
 	}
 	p.onSession = observer
 	p.reportSession()
-	return p.err
+	// Output failures belong to Finish's durable failed-result path. Only
+	// failure to persist the session should abort Host observer installation.
+	return p.observerErr
 }
 
 func (p *protocolCollector) reportSession() {
-	if p.err != nil || !p.sessionObserved || p.sessionReported || p.onSession == nil {
+	if p.observerErr != nil || !p.sessionObserved || p.sessionReported || p.onSession == nil {
 		return
 	}
 	if err := p.onSession(providerSessionKind(p.provider), p.sessionID); err != nil {
+		p.observerErr = err
 		p.err = err
 		return
 	}
