@@ -1,0 +1,1052 @@
+{
+  "runtime_root": "/private/tmp/multi-cli-flow-i6ppewql",
+  "providers": {
+    "claude-code": {
+      "lock": {
+        "version": 1,
+        "provider": "claude-code",
+        "protocol": "claude-stream-json-v1",
+        "binary": {
+          "path": "/Users/guanjunhui/.local/share/claude/versions/2.1.267",
+          "version": "2.1.267 (Claude Code)",
+          "sha256": "a681f3008f0050029aeebcab3af51bb6a55ddeb625a3af3141a4416d43cd2558"
+        }
+      },
+      "profile_supported": true,
+      "reason": "",
+      "status": "result_ready",
+      "snapshot": {
+        "task_id": "claude-code",
+        "run_id": "multi-cli-mainflow",
+        "status": "result_ready",
+        "work_revision": 1,
+        "attempt_id": "attempt-7dddfbc293fb53a12ca99f39",
+        "segment_id": "segment-02e8bb1e8f7ac5914085f80e",
+        "segment_status": "exited",
+        "host_pid": 68943,
+        "host_birth": "Tue Sep 15 14:52:04 2026",
+        "host_status": "ready",
+        "process": {
+          "pid": 68993,
+          "birth": "Tue Sep 15 14:52:04 2026",
+          "pgid": 68993
+        }
+      },
+      "collection": {
+        "delivery_id": "collection-84f24a8ded6ba300b2f2d55b07ff7a24ed2a8fb1e8af7fe9a45edd484c72c809",
+        "collection_proof_sha256": "84f24a8ded6ba300b2f2d55b07ff7a24ed2a8fb1e8af7fe9a45edd484c72c809",
+        "version": 1,
+        "status": "pending",
+        "events": [
+          {
+            "version": 1,
+            "producer_id": "host-launch-096a329db89ed50338196e9cfbf85194bef7",
+            "event_id": "host-launch-096a329db89ed50338196e9cfbf85194bef7:9",
+            "event_revision": 9,
+            "action_slot": "action-e3d3e27182d5e742562837912be21e68",
+            "run_id": "multi-cli-mainflow",
+            "task_id": "claude-code",
+            "attempt_id": "attempt-7dddfbc293fb53a12ca99f39",
+            "segment_id": "segment-02e8bb1e8f7ac5914085f80e",
+            "work_revision": 1,
+            "execution_epoch": 1,
+            "command_id": "command-701e69fab222aac05a4736fc",
+            "sequence": 9,
+            "kind": "result",
+            "payload_hash": "0b94794fbd761dffabce58ceb62031b42ab0a9d7d50f0c3c3973fb4f4176d76c",
+            "process": {
+              "pid": 68993,
+              "birth": "Tue Sep 15 14:52:04 2026",
+              "pgid": 68993
+            },
+            "exit_code": 0,
+            "artifact": {
+              "id": "result-output.bin",
+              "path": "/private/tmp/multi-cli-flow-i6ppewql/state/host-spool/host-launch-096a329db89ed50338196e9cfbf85194bef7/attempt-7dddfbc293fb53a12ca99f39/segment-02e8bb1e8f7ac5914085f80e/result-output.bin",
+              "size": 512,
+              "sha256": "0b94794fbd761dffabce58ceb62031b42ab0a9d7d50f0c3c3973fb4f4176d76c"
+            },
+            "session_kind": "session-id",
+            "session_id": "7bc187b9-e384-43b7-a729-027400073c1f"
+          }
+        ]
+      }
+    },
+    "antigravity-cli": {
+      "lock": {
+        "version": 1,
+        "provider": "antigravity-cli",
+        "protocol": "agy-stream-json-v1",
+        "binary": {
+          "path": "/Users/guanjunhui/.local/bin/agy",
+          "version": "1.2.3",
+          "sha256": "e0c2743e3fd062e11c13d2eb5fabaa244936094bbe39c30fdfbac619bb78e554"
+        }
+      },
+      "profile_supported": true,
+      "reason": "",
+      "status": "running",
+      "snapshot": {
+        "task_id": "antigravity-cli",
+        "run_id": "multi-cli-mainflow",
+        "status": "running",
+        "work_revision": 1,
+        "attempt_id": "attempt-ec5a25fcdd9a238a536a3f38",
+        "segment_id": "segment-d34d8fae67fb8d1be6e1d583",
+        "segment_status": "running",
+        "host_pid": 68943,
+        "host_birth": "Tue Sep 15 14:52:04 2026",
+        "host_status": "ready",
+        "process": {
+          "pid": 68995,
+          "birth": "Tue Sep 15 14:52:04 2026",
+          "pgid": 68995
+        }
+      }
+    }
+  },
+  "completed": false,
+  "error": "claude-code: incorrect result artifact",
+  "commands": [
+    {
+      "command": "ensure-running",
+      "exit": 0,
+      "status": "ready"
+    },
+    {
+      "command": "owner-bind",
+      "exit": 0,
+      "status": ""
+    },
+    {
+      "command": "provider-probe",
+      "exit": 0,
+      "status": ""
+    },
+    {
+      "command": "provider-probe",
+      "exit": 0,
+      "status": ""
+    },
+    {
+      "command": "submit",
+      "exit": 0,
+      "status": "queued"
+    },
+    {
+      "command": "status",
+      "exit": 0,
+      "status": "running"
+    },
+    {
+      "command": "status",
+      "exit": 0,
+      "status": "running"
+    },
+    {
+      "command": "status",
+      "exit": 0,
+      "status": "running"
+    },
+    {
+      "command": "status",
+      "exit": 0,
+      "status": "running"
+    },
+    {
+      "command": "status",
+      "exit": 0,
+      "status": "running"
+    },
+    {
+      "command": "status",
+      "exit": 0,
+      "status": "running"
+    },
+    {
+      "command": "status",
+      "exit": 0,
+      "status": "running"
+    },
+    {
+      "command": "status",
+      "exit": 0,
+      "status": "running"
+    },
+    {
+      "command": "status",
+      "exit": 0,
+      "status": "running"
+    },
+    {
+      "command": "status",
+      "exit": 0,
+      "status": "running"
+    },
+    {
+      "command": "status",
+      "exit": 0,
+      "status": "running"
+    },
+    {
+      "command": "status",
+      "exit": 0,
+      "status": "running"
+    },
+    {
+      "command": "status",
+      "exit": 0,
+      "status": "running"
+    },
+    {
+      "command": "status",
+      "exit": 0,
+      "status": "running"
+    },
+    {
+      "command": "status",
+      "exit": 0,
+      "status": "running"
+    },
+    {
+      "command": "status",
+      "exit": 0,
+      "status": "running"
+    },
+    {
+      "command": "status",
+      "exit": 0,
+      "status": "running"
+    },
+    {
+      "command": "status",
+      "exit": 0,
+      "status": "running"
+    },
+    {
+      "command": "status",
+      "exit": 0,
+      "status": "running"
+    },
+    {
+      "command": "status",
+      "exit": 0,
+      "status": "running"
+    },
+    {
+      "command": "status",
+      "exit": 0,
+      "status": "running"
+    },
+    {
+      "command": "status",
+      "exit": 0,
+      "status": "running"
+    },
+    {
+      "command": "status",
+      "exit": 0,
+      "status": "running"
+    },
+    {
+      "command": "status",
+      "exit": 0,
+      "status": "running"
+    },
+    {
+      "command": "status",
+      "exit": 0,
+      "status": "running"
+    },
+    {
+      "command": "status",
+      "exit": 0,
+      "status": "running"
+    },
+    {
+      "command": "status",
+      "exit": 0,
+      "status": "running"
+    },
+    {
+      "command": "status",
+      "exit": 0,
+      "status": "running"
+    },
+    {
+      "command": "status",
+      "exit": 0,
+      "status": "running"
+    },
+    {
+      "command": "status",
+      "exit": 0,
+      "status": "running"
+    },
+    {
+      "command": "status",
+      "exit": 0,
+      "status": "running"
+    },
+    {
+      "command": "status",
+      "exit": 0,
+      "status": "running"
+    },
+    {
+      "command": "status",
+      "exit": 0,
+      "status": "running"
+    },
+    {
+      "command": "status",
+      "exit": 0,
+      "status": "running"
+    },
+    {
+      "command": "status",
+      "exit": 0,
+      "status": "running"
+    },
+    {
+      "command": "status",
+      "exit": 0,
+      "status": "running"
+    },
+    {
+      "command": "status",
+      "exit": 0,
+      "status": "running"
+    },
+    {
+      "command": "status",
+      "exit": 0,
+      "status": "running"
+    },
+    {
+      "command": "status",
+      "exit": 0,
+      "status": "running"
+    },
+    {
+      "command": "status",
+      "exit": 0,
+      "status": "running"
+    },
+    {
+      "command": "status",
+      "exit": 0,
+      "status": "running"
+    },
+    {
+      "command": "status",
+      "exit": 0,
+      "status": "running"
+    },
+    {
+      "command": "status",
+      "exit": 0,
+      "status": "running"
+    },
+    {
+      "command": "status",
+      "exit": 0,
+      "status": "running"
+    },
+    {
+      "command": "status",
+      "exit": 0,
+      "status": "running"
+    },
+    {
+      "command": "status",
+      "exit": 0,
+      "status": "running"
+    },
+    {
+      "command": "status",
+      "exit": 0,
+      "status": "running"
+    },
+    {
+      "command": "status",
+      "exit": 0,
+      "status": "running"
+    },
+    {
+      "command": "status",
+      "exit": 0,
+      "status": "running"
+    },
+    {
+      "command": "status",
+      "exit": 0,
+      "status": "running"
+    },
+    {
+      "command": "status",
+      "exit": 0,
+      "status": "running"
+    },
+    {
+      "command": "status",
+      "exit": 0,
+      "status": "running"
+    },
+    {
+      "command": "status",
+      "exit": 0,
+      "status": "running"
+    },
+    {
+      "command": "status",
+      "exit": 0,
+      "status": "running"
+    },
+    {
+      "command": "status",
+      "exit": 0,
+      "status": "running"
+    },
+    {
+      "command": "status",
+      "exit": 0,
+      "status": "running"
+    },
+    {
+      "command": "status",
+      "exit": 0,
+      "status": "running"
+    },
+    {
+      "command": "status",
+      "exit": 0,
+      "status": "running"
+    },
+    {
+      "command": "status",
+      "exit": 0,
+      "status": "running"
+    },
+    {
+      "command": "status",
+      "exit": 0,
+      "status": "running"
+    },
+    {
+      "command": "status",
+      "exit": 0,
+      "status": "running"
+    },
+    {
+      "command": "status",
+      "exit": 0,
+      "status": "running"
+    },
+    {
+      "command": "status",
+      "exit": 0,
+      "status": "running"
+    },
+    {
+      "command": "status",
+      "exit": 0,
+      "status": "running"
+    },
+    {
+      "command": "status",
+      "exit": 0,
+      "status": "running"
+    },
+    {
+      "command": "status",
+      "exit": 0,
+      "status": "running"
+    },
+    {
+      "command": "status",
+      "exit": 0,
+      "status": "running"
+    },
+    {
+      "command": "status",
+      "exit": 0,
+      "status": "running"
+    },
+    {
+      "command": "status",
+      "exit": 0,
+      "status": "running"
+    },
+    {
+      "command": "status",
+      "exit": 0,
+      "status": "running"
+    },
+    {
+      "command": "status",
+      "exit": 0,
+      "status": "running"
+    },
+    {
+      "command": "status",
+      "exit": 0,
+      "status": "running"
+    },
+    {
+      "command": "status",
+      "exit": 0,
+      "status": "running"
+    },
+    {
+      "command": "status",
+      "exit": 0,
+      "status": "running"
+    },
+    {
+      "command": "status",
+      "exit": 0,
+      "status": "running"
+    },
+    {
+      "command": "status",
+      "exit": 0,
+      "status": "running"
+    },
+    {
+      "command": "status",
+      "exit": 0,
+      "status": "running"
+    },
+    {
+      "command": "status",
+      "exit": 0,
+      "status": "running"
+    },
+    {
+      "command": "status",
+      "exit": 0,
+      "status": "running"
+    },
+    {
+      "command": "status",
+      "exit": 0,
+      "status": "running"
+    },
+    {
+      "command": "status",
+      "exit": 0,
+      "status": "running"
+    },
+    {
+      "command": "status",
+      "exit": 0,
+      "status": "running"
+    },
+    {
+      "command": "status",
+      "exit": 0,
+      "status": "running"
+    },
+    {
+      "command": "status",
+      "exit": 0,
+      "status": "running"
+    },
+    {
+      "command": "status",
+      "exit": 0,
+      "status": "running"
+    },
+    {
+      "command": "status",
+      "exit": 0,
+      "status": "running"
+    },
+    {
+      "command": "status",
+      "exit": 0,
+      "status": "running"
+    },
+    {
+      "command": "status",
+      "exit": 0,
+      "status": "running"
+    },
+    {
+      "command": "status",
+      "exit": 0,
+      "status": "running"
+    },
+    {
+      "command": "status",
+      "exit": 0,
+      "status": "running"
+    },
+    {
+      "command": "status",
+      "exit": 0,
+      "status": "running"
+    },
+    {
+      "command": "status",
+      "exit": 0,
+      "status": "running"
+    },
+    {
+      "command": "status",
+      "exit": 0,
+      "status": "running"
+    },
+    {
+      "command": "status",
+      "exit": 0,
+      "status": "running"
+    },
+    {
+      "command": "status",
+      "exit": 0,
+      "status": "running"
+    },
+    {
+      "command": "status",
+      "exit": 0,
+      "status": "running"
+    },
+    {
+      "command": "status",
+      "exit": 0,
+      "status": "running"
+    },
+    {
+      "command": "status",
+      "exit": 0,
+      "status": "running"
+    },
+    {
+      "command": "status",
+      "exit": 0,
+      "status": "running"
+    },
+    {
+      "command": "status",
+      "exit": 0,
+      "status": "running"
+    },
+    {
+      "command": "status",
+      "exit": 0,
+      "status": "running"
+    },
+    {
+      "command": "status",
+      "exit": 0,
+      "status": "running"
+    },
+    {
+      "command": "status",
+      "exit": 0,
+      "status": "running"
+    },
+    {
+      "command": "status",
+      "exit": 0,
+      "status": "running"
+    },
+    {
+      "command": "status",
+      "exit": 0,
+      "status": "running"
+    },
+    {
+      "command": "status",
+      "exit": 0,
+      "status": "running"
+    },
+    {
+      "command": "status",
+      "exit": 0,
+      "status": "running"
+    },
+    {
+      "command": "status",
+      "exit": 0,
+      "status": "running"
+    },
+    {
+      "command": "status",
+      "exit": 0,
+      "status": "running"
+    },
+    {
+      "command": "status",
+      "exit": 0,
+      "status": "running"
+    },
+    {
+      "command": "status",
+      "exit": 0,
+      "status": "running"
+    },
+    {
+      "command": "status",
+      "exit": 0,
+      "status": "running"
+    },
+    {
+      "command": "status",
+      "exit": 0,
+      "status": "running"
+    },
+    {
+      "command": "status",
+      "exit": 0,
+      "status": "running"
+    },
+    {
+      "command": "status",
+      "exit": 0,
+      "status": "running"
+    },
+    {
+      "command": "status",
+      "exit": 0,
+      "status": "running"
+    },
+    {
+      "command": "status",
+      "exit": 0,
+      "status": "running"
+    },
+    {
+      "command": "status",
+      "exit": 0,
+      "status": "running"
+    },
+    {
+      "command": "status",
+      "exit": 0,
+      "status": "running"
+    },
+    {
+      "command": "status",
+      "exit": 0,
+      "status": "running"
+    },
+    {
+      "command": "status",
+      "exit": 0,
+      "status": "running"
+    },
+    {
+      "command": "status",
+      "exit": 0,
+      "status": "running"
+    },
+    {
+      "command": "status",
+      "exit": 0,
+      "status": "running"
+    },
+    {
+      "command": "status",
+      "exit": 0,
+      "status": "running"
+    },
+    {
+      "command": "status",
+      "exit": 0,
+      "status": "running"
+    },
+    {
+      "command": "status",
+      "exit": 0,
+      "status": "running"
+    },
+    {
+      "command": "status",
+      "exit": 0,
+      "status": "running"
+    },
+    {
+      "command": "status",
+      "exit": 0,
+      "status": "running"
+    },
+    {
+      "command": "status",
+      "exit": 0,
+      "status": "running"
+    },
+    {
+      "command": "status",
+      "exit": 0,
+      "status": "running"
+    },
+    {
+      "command": "status",
+      "exit": 0,
+      "status": "running"
+    },
+    {
+      "command": "status",
+      "exit": 0,
+      "status": "running"
+    },
+    {
+      "command": "status",
+      "exit": 0,
+      "status": "running"
+    },
+    {
+      "command": "status",
+      "exit": 0,
+      "status": "running"
+    },
+    {
+      "command": "status",
+      "exit": 0,
+      "status": "running"
+    },
+    {
+      "command": "status",
+      "exit": 0,
+      "status": "running"
+    },
+    {
+      "command": "status",
+      "exit": 0,
+      "status": "running"
+    },
+    {
+      "command": "status",
+      "exit": 0,
+      "status": "running"
+    },
+    {
+      "command": "status",
+      "exit": 0,
+      "status": "running"
+    },
+    {
+      "command": "status",
+      "exit": 0,
+      "status": "running"
+    },
+    {
+      "command": "status",
+      "exit": 0,
+      "status": "running"
+    },
+    {
+      "command": "status",
+      "exit": 0,
+      "status": "running"
+    },
+    {
+      "command": "status",
+      "exit": 0,
+      "status": "running"
+    },
+    {
+      "command": "status",
+      "exit": 0,
+      "status": "running"
+    },
+    {
+      "command": "status",
+      "exit": 0,
+      "status": "running"
+    },
+    {
+      "command": "status",
+      "exit": 0,
+      "status": "running"
+    },
+    {
+      "command": "status",
+      "exit": 0,
+      "status": "running"
+    },
+    {
+      "command": "status",
+      "exit": 0,
+      "status": "running"
+    },
+    {
+      "command": "status",
+      "exit": 0,
+      "status": "running"
+    },
+    {
+      "command": "status",
+      "exit": 0,
+      "status": "running"
+    },
+    {
+      "command": "status",
+      "exit": 0,
+      "status": "running"
+    },
+    {
+      "command": "status",
+      "exit": 0,
+      "status": "running"
+    },
+    {
+      "command": "status",
+      "exit": 0,
+      "status": "running"
+    },
+    {
+      "command": "status",
+      "exit": 0,
+      "status": "running"
+    },
+    {
+      "command": "status",
+      "exit": 0,
+      "status": "running"
+    },
+    {
+      "command": "status",
+      "exit": 0,
+      "status": "running"
+    },
+    {
+      "command": "status",
+      "exit": 0,
+      "status": "running"
+    },
+    {
+      "command": "status",
+      "exit": 0,
+      "status": "running"
+    },
+    {
+      "command": "status",
+      "exit": 0,
+      "status": "running"
+    },
+    {
+      "command": "status",
+      "exit": 0,
+      "status": "running"
+    },
+    {
+      "command": "status",
+      "exit": 0,
+      "status": "running"
+    },
+    {
+      "command": "status",
+      "exit": 0,
+      "status": "running"
+    },
+    {
+      "command": "status",
+      "exit": 0,
+      "status": "running"
+    },
+    {
+      "command": "status",
+      "exit": 0,
+      "status": "running"
+    },
+    {
+      "command": "status",
+      "exit": 0,
+      "status": "running"
+    },
+    {
+      "command": "status",
+      "exit": 0,
+      "status": "running"
+    },
+    {
+      "command": "status",
+      "exit": 0,
+      "status": "running"
+    },
+    {
+      "command": "status",
+      "exit": 0,
+      "status": "running"
+    },
+    {
+      "command": "status",
+      "exit": 0,
+      "status": "running"
+    },
+    {
+      "command": "status",
+      "exit": 0,
+      "status": "running"
+    },
+    {
+      "command": "status",
+      "exit": 0,
+      "status": "running"
+    },
+    {
+      "command": "status",
+      "exit": 0,
+      "status": "running"
+    },
+    {
+      "command": "status",
+      "exit": 0,
+      "status": "running"
+    },
+    {
+      "command": "status",
+      "exit": 0,
+      "status": "running"
+    },
+    {
+      "command": "status",
+      "exit": 0,
+      "status": "running"
+    },
+    {
+      "command": "status",
+      "exit": 0,
+      "status": "running"
+    },
+    {
+      "command": "status",
+      "exit": 0,
+      "status": "running"
+    },
+    {
+      "command": "status",
+      "exit": 0,
+      "status": "running"
+    },
+    {
+      "command": "status",
+      "exit": 0,
+      "status": "running"
+    },
+    {
+      "command": "status",
+      "exit": 0,
+      "status": "result_ready"
+    },
+    {
+      "command": "collect",
+      "exit": 0,
+      "status": "pending"
+    },
+    {
+      "command": "stop",
+      "exit": 2,
+      "status": "error"
+    },
+    {
+      "command": "stop",
+      "exit": 2,
+      "status": "error"
+    }
+  ]
+}

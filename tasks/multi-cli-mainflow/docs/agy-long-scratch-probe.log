@@ -1,0 +1,61 @@
+root /private/tmp/multi-cli-agy-probe-rhgu9x49 exit 0
+stdout bytes 2412
+stdout {'event': 'init', 'keys': ['event', 'conversation_id', 'init'], 'step': {}, 'result': {}}
+stdout {'event': 'step_update', 'keys': ['event', 'step_update'], 'step': {'state': 'DONE', 'step_type': 'user_input'}, 'result': {}}
+stdout {'event': 'step_update', 'keys': ['event', 'step_update'], 'step': {'state': 'ACTIVE', 'step_type': 'agent_response', 'text_delta': 'AGY_START'}, 'result': {}}
+stdout {'event': 'step_update', 'keys': ['event', 'step_update'], 'step': {'state': 'ACTIVE', 'step_type': 'agent_response', 'text_delta': '_OK'}, 'result': {}}
+stdout {'event': 'step_update', 'keys': ['event', 'step_update'], 'step': {'state': 'DONE', 'step_type': 'agent_response', 'text_delta': '\n'}, 'result': {}}
+stdout {'event': 'result', 'keys': ['event', 'result'], 'step': {}, 'result': {'status': 'SUCCESS', 'response': 'AGY_START_OK\n'}}
+stderr bytes 30211
+stderr ERROR: logging before google.Init: E0915 15:06:09.582077       1 main.go:653] Failed to redirect output for CLI: creating log file: opening log file: open /Users/guanjunhui/.gemini/antigravity-cli/log/cli-20260915_150609.log: operation not permitted
+stderr E0915 15:06:09.588675       9 server.go:1545] Failed to initialize crash reporter: failed to setup crash output: open /Users/guanjunhui/.gemini/antigravity-cli/crashes/crash_87880_343b3230-9b75-4f5e-b4cc-cbc339676156.log: operation not permitted
+stderr E0915 15:06:10.029429      87 errorreport.go:224] Failed to poll ListExperiments: error getting token source: You are not logged into Antigravity.
+stderr W0915 15:06:10.034955      38 cache.go:135] Cache(userInfo): Singleflight refresh failed: failed to get load code assist response: error getting token source: You are not logged into Antigravity.
+stderr E0915 15:06:10.034984      38 errorreport.go:224] failed to get load code assist response: error getting token source: You are not logged into Antigravity.
+stderr W0915 15:06:10.037098       9 cache.go:135] Cache(userInfo): Singleflight refresh failed: failed to get load code assist response: error getting token source: You are not logged into Antigravity.
+stderr E0915 15:06:10.037116       9 errorreport.go:224] failed to get load code assist response: error getting token source: You are not logged into Antigravity.
+stderr W0915 15:06:10.037232       9 cache.go:135] Cache(userInfo): Singleflight refresh failed: failed to get load code assist response: error getting token source: You are not logged into Antigravity.
+stderr E0915 15:06:10.037240       9 errorreport.go:224] failed to get load code assist response: error getting token source: You are not logged into Antigravity.
+stderr W0915 15:06:10.040860       9 defaults.go:778] failed to get cs path: cs path /usr/bin/cs invalid
+stderr W0915 15:06:10.041617       9 cache.go:135] Cache(userInfo): Singleflight refresh failed: failed to get load code assist response: error getting token source: You are not logged into Antigravity.
+stderr E0915 15:06:10.041634       9 errorreport.go:224] failed to get load code assist response: error getting token source: You are not logged into Antigravity.
+stderr E0915 15:06:10.055901       9 errorreport.go:224] Failed to poll ListExperiments: error getting token source: You are not logged into Antigravity.
+stderr W0915 15:06:10.057741     210 cache.go:135] Cache(userInfo): Singleflight refresh failed: failed to get load code assist response: error getting token source: You are not logged into Antigravity.
+stderr E0915 15:06:10.057752     210 errorreport.go:224] failed to get load code assist response: error getting token source: You are not logged into Antigravity.
+stderr E0915 15:06:10.057965       1 launchsteps.go:84] Failed to resolve GeminiDir ".gemini": .gemini must be an absolute path: path is not absolute, falling back to default
+stderr W0915 15:06:10.059493     119 cache.go:135] Cache(userInfo): Singleflight refresh failed: failed to get load code assist response: error getting token source: You are not logged into Antigravity.
+stderr E0915 15:06:10.059502     119 errorreport.go:224] failed to get load code assist response: error getting token source: You are not logged into Antigravity.
+stderr W0915 15:06:10.059614     119 cache.go:135] Cache(userInfo): Singleflight refresh failed: failed to get load code assist response: error getting token source: You are not logged into Antigravity.
+stderr E0915 15:06:10.059621     119 errorreport.go:224] failed to get load code assist response: error getting token source: You are not logged into Antigravity.
+stderr W0915 15:06:10.059702     119 cache.go:135] Cache(userInfo): Singleflight refresh failed: failed to get load code assist response: error getting token source: You are not logged into Antigravity.
+stderr E0915 15:06:10.059710     119 errorreport.go:224] failed to get load code assist response: error getting token source: You are not logged into Antigravity.
+stderr W0915 15:06:10.062307     119 cache.go:135] Cache(userInfo): Singleflight refresh failed: failed to get load code assist response: error getting token source: You are not logged into Antigravity.
+stderr E0915 15:06:10.062318     119 errorreport.go:224] failed to get load code assist response: error getting token source: You are not logged into Antigravity.
+stderr W0915 15:06:10.062441     237 cache.go:135] Cache(userInfo): Singleflight refresh failed: failed to get load code assist response: error getting token source: You are not logged into Antigravity.
+stderr E0915 15:06:10.062449     237 errorreport.go:224] failed to get load code assist response: error getting token source: You are not logged into Antigravity.
+stderr W0915 15:06:10.089658     277 cache.go:163] Failed to refresh cache in background: admin controls not applicable
+stderr W0915 15:06:10.089774     192 cache.go:163] Failed to refresh cache in background: admin controls not applicable
+stderr E0915 15:06:12.060432     130 browser_context.go:179] failed to install playwright: could not install driver: could not install driver: error: got non 200 status code: 404 (404 Not Found) from https://playwright.azureedge.net/builds/driver/playwright-1.57.0-mac-arm64.zip
+stderr error: got non 200 status code: 404 (404 Not Found) from https://playwright-akamai.azureedge.net/builds/driver/playwright-1.57.0-mac-arm64.zip
+stderr error: got non 200 status code: 404 (404 Not Found) from https://playwright-verizon.azureedge.net/builds/driver/playwright-1.57.0-mac-arm64.zip
+stderr E0915 15:06:14.341711       1 errorreport.go:224] failed to create persistent trajectory in store 1: open backend /Users/guanjunhui/.gemini/antigravity-cli/conversations/7fbeea93-1fb1-4e1f-89da-7f80085a3ca8.db: pre-create trajectory db file: open /Users/guanjunhui/.gemini/antigravity-cli/conversations/7fbeea93-1fb1-4e1f-89da-7f80085a3ca8.db: operation not permitted
+stderr E0915 15:06:14.341956       1 errorreport.go:224] Failed to ensure artifact directories for cascade 7fbeea93-1fb1-4e1f-89da-7f80085a3ca8: mkdir /Users/guanjunhui/.gemini/antigravity-cli/brain/7fbeea93-1fb1-4e1f-89da-7f80085a3ca8: operation not permitted
+stderr E0915 15:06:14.343015       1 cascade_run_state.go:163] Failed to register with artifacts watcher for 7fbeea93-1fb1-4e1f-89da-7f80085a3ca8: Failed to register with artifacts watcher for 7fbeea93-1fb1-4e1f-89da-7f80085a3ca8: Failed to create artifacts directory for 7fbeea93-1fb1-4e1f-89da-7f80085a3ca8: mkdir /Users/guanjunhui/.gemini/antigravity-cli/brain/7fbeea93-1fb1-4e1f-89da-7f80085a3ca8: operation not permitted
+stderr E0915 15:06:14.343262       1 errorreport.go:224] Failed to register with artifacts watcher for 7fbeea93-1fb1-4e1f-89da-7f80085a3ca8: Failed to register with artifacts watcher for 7fbeea93-1fb1-4e1f-89da-7f80085a3ca8: Failed to create artifacts directory for 7fbeea93-1fb1-4e1f-89da-7f80085a3ca8: mkdir /Users/guanjunhui/.gemini/antigravity-cli/brain/7fbeea93-1fb1-4e1f-89da-7f80085a3ca8: operation not permitted
+stderr W0915 15:06:14.345466       1 presence.go:109] presence: open /Users/guanjunhui/.gemini/antigravity-cli/presence/7fbeea93-1fb1-4e1f-89da-7f80085a3ca8.lock: operation not permitted
+stderr E0915 15:06:14.351365     439 cache_manager.go:17] failed to persist last conversation to cache: failed to write last conversations: open /Users/guanjunhui/.gemini/antigravity-cli/cache/last_conversations.json.e78f18a6-4230-4157-8e5f-b1250733809f.tmp: operation not permitted
+stderr E0915 15:06:14.372622     117 stager.go:117] Failed to save message for 7fbeea93-1fb1-4e1f-89da-7f80085a3ca8: open /Users/guanjunhui/.gemini/antigravity-cli/conversations/7fbeea93-1fb1-4e1f-89da-7f80085a3ca8.afbcb665-a920-4345-b505-d5ff2a414d70.tmp: operation not permitted
+stderr E0915 15:06:14.372748     117 errorreport.go:224] open /Users/guanjunhui/.gemini/antigravity-cli/conversations/7fbeea93-1fb1-4e1f-89da-7f80085a3ca8.afbcb665-a920-4345-b505-d5ff2a414d70.tmp: operation not permitted
+stderr E0915 15:06:14.372928     419 errorreport.go:224] mkdir /Users/guanjunhui/.gemini/antigravity-cli/brain/7fbeea93-1fb1-4e1f-89da-7f80085a3ca8: operation not permitted
+stderr E0915 15:06:15.032821      94 errorreport.go:224] [Hub Summaries] failed to write summaries file in persist: open /Users/guanjunhui/.gemini/antigravity-cli/jetbox_summaries_proto.pb.8af0a9dd-860d-49ca-a5c1-54797d13bfa9.tmp: operation not permitted
+stderr E0915 15:06:17.112515     418 errorreport.go:224] writing generated conversation title for 7fbeea93-1fb1-4e1f-89da-7f80085a3ca8: open /Users/guanjunhui/.gemini/antigravity-cli/annotations/7fbeea93-1fb1-4e1f-89da-7f80085a3ca8.pbtxt.84d799c1-317e-4abb-bc10-479898ec5e9e.tmp: operation not permitted
+stderr E0915 15:06:18.602339     419 errorreport.go:224] mkdir /Users/guanjunhui/.gemini/antigravity-cli/brain/7fbeea93-1fb1-4e1f-89da-7f80085a3ca8: operation not permitted
+stderr E0915 15:06:18.602353     117 stager.go:117] Failed to save message for 7fbeea93-1fb1-4e1f-89da-7f80085a3ca8: open /Users/guanjunhui/.gemini/antigravity-cli/conversations/7fbeea93-1fb1-4e1f-89da-7f80085a3ca8.013fd397-faab-4e4d-9ca1-2c27bf081f14.tmp: operation not permitted
+stderr E0915 15:06:18.602423     117 errorreport.go:224] open /Users/guanjunhui/.gemini/antigravity-cli/conversations/7fbeea93-1fb1-4e1f-89da-7f80085a3ca8.013fd397-faab-4e4d-9ca1-2c27bf081f14.tmp: operation not permitted
+stderr E0915 15:06:18.603868     117 stager.go:117] Failed to save message for 7fbeea93-1fb1-4e1f-89da-7f80085a3ca8: open /Users/guanjunhui/.gemini/antigravity-cli/conversations/7fbeea93-1fb1-4e1f-89da-7f80085a3ca8.1d5fdf58-ec1f-4eca-956d-b1fad5c620d1.tmp: operation not permitted
+stderr E0915 15:06:18.603900     117 errorreport.go:224] open /Users/guanjunhui/.gemini/antigravity-cli/conversations/7fbeea93-1fb1-4e1f-89da-7f80085a3ca8.1d5fdf58-ec1f-4eca-956d-b1fad5c620d1.tmp: operation not permitted
+stderr E0915 15:06:18.604526     117 stager.go:117] Failed to save message for 7fbeea93-1fb1-4e1f-89da-7f80085a3ca8: open /Users/guanjunhui/.gemini/antigravity-cli/conversations/7fbeea93-1fb1-4e1f-89da-7f80085a3ca8.ba034749-e7cb-4dd9-a00c-44827792422b.tmp: operation not permitted
+stderr E0915 15:06:18.604561     117 errorreport.go:224] open /Users/guanjunhui/.gemini/antigravity-cli/conversations/7fbeea93-1fb1-4e1f-89da-7f80085a3ca8.ba034749-e7cb-4dd9-a00c-44827792422b.tmp: operation not permitted
+stderr E0915 15:06:18.615846       1 cache_manager.go:17] failed to persist last conversation to cache: failed to write last conversations: open /Users/guanjunhui/.gemini/antigravity-cli/cache/last_conversations.json.90f92875-645c-4424-b1b8-60f55e63ce5e.tmp: operation not permitted
+stderr E0915 15:06:18.616588      94 errorreport.go:224] [Hub Summaries] failed to write summaries file in persist: open /Users/guanjunhui/.gemini/antigravity-cli/jetbox_summaries_proto.pb.95e04d8f-5c3f-4f20-9eb5-f251d4a072b3.tmp: operation not permitted
+scratch_files ['unleash-repo-schema-v1-codeium-language-server.json']

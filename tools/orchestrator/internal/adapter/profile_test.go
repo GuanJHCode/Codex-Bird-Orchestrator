@@ -27,6 +27,33 @@ func TestProfileControlsModelReasoningAndRole(t *testing.T) {
 	}
 }
 
+func TestAGYReviewerProfileUsesNativePlanAndTypedModel(t *testing.T) {
+	req := profileRequest(t, `{"version":1,"role":"reviewer","model":"gemini-3.8-flash-low","reasoning":"low","permission":"read-only","timeout_ms":9000}`)
+	req.Provider = ProviderAGY
+	req.Lock.Provider, req.Lock.Protocol = req.Provider, ProtocolID(req.Provider)
+	help := "--input-format --output-format --mode --model --effort"
+	if err := CheckCapabilities(req, help); err != nil {
+		t.Fatal(err)
+	}
+	inv, err := BuildInvocation(req)
+	if err != nil {
+		t.Fatal(err)
+	}
+	args := strings.Join(inv.Args(), " ")
+	for _, want := range []string{"--mode plan", "--model gemini-3.8-flash-low", "--effort low"} {
+		if !strings.Contains(args, want) {
+			t.Fatalf("missing %q: %s", want, args)
+		}
+	}
+	if err := CheckCapabilities(req, "--input-format --output-format --model --effort"); err == nil {
+		t.Fatal("accepted CLI without native plan capability")
+	}
+	req.Profile.Role, req.Profile.Permission = Implementer, WorkspaceWrite
+	if _, err := BuildInvocation(req); err == nil {
+		t.Fatal("unverified AGY editing accepted")
+	}
+}
+
 func TestProfileRejectsUnknownOrExpandedConfiguration(t *testing.T) {
 	for _, profile := range []string{
 		`{"version":2,"role":"reviewer","permission":"read-only","timeout_ms":9000}`,

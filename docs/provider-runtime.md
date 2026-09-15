@@ -35,12 +35,14 @@
 
 只读指文件写入权限：保留既有 Provider 读取/认证环境，不宣称只允许读取 cwd 的全系统白名单。
 
-- reviewer：`permission=read-only`，Claude 原生 `plan` 权限，加 macOS 文件写入隔离。
+- reviewer：`permission=read-only`，Claude 原生 `--permission-mode plan` 或 AGY 原生 `--mode plan`，加 macOS 文件写入隔离。两者支持 typed `model`/`reasoning`；AGY 读取任务优先明确使用 `view_file`，其终端工具路径尚未完成可靠性验收。
 - implementer：`permission=workspace-write`，必须是经授权的 Git linked worktree。保留 Claude 原生 `default` 审批；只允许工作区内容及受控临时/产物目录写入，拒绝 `.git` 和公共 Git 元数据写入。主脑仍需通过现有 Git Host 生成/审查/整合候选。
 - 控制数据库、owner/control/bootstrap 凭据和其他任务的 spool/report capability 不向新 profile Worker 开放。当前任务可以读取自己的报告能力文件，在其 `artifacts/` 子目录写报告产物。
 - 不添加 bypass、自动接受所有工具、`acceptEdits` 或全盘写权限参数。Provider 原生审批拒绝时，任务失败或等待，主脑不能伪造审批。
 
-当前新 profile 的真实续接测试未通过，故拒绝 session resume：`profile_resume_not_verified`。Codex 生产启动仍被 `codex_trial_guard_not_ready` 拒绝；AGY/Grok 的新 profile 返回 `execution_profile_unsupported`。旧协议的显式恢复接口与已有安全校验保留，不能通过退回旧 profile 规避新请求的权限要求。
+当前新 profile 的真实续接测试未通过，故拒绝 session resume：`profile_resume_not_verified`。Codex 生产启动仍被 `codex_trial_guard_not_ready` 拒绝；Grok 的新 profile 返回 `execution_profile_unsupported`。AGY 只开放 reviewer，implementer 返回 `implementer_unsupported`。旧协议的显式恢复接口与已有安全校验保留，不能通过退回旧 profile 规避新请求的权限要求。
+
+Claude + AGY 的生产安装主流程已通过同 run 的真实随机文件读取、产物哈希、collect、ACK 与 accept 验收；脚本自动生成 owner-only 请求文件，见 [复现入口](../tasks/multi-cli-mainflow/docs/usage.md)。它验证 CLI 调用闭环，不代表模型编辑、候选提交生成或原生主脑 TUI 已验收。
 
 ### 探测与升级
 

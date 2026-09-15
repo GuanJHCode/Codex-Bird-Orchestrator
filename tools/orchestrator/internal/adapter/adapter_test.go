@@ -303,6 +303,23 @@ func TestAGYWaitingResultIsAUserQuestion(t *testing.T) {
 	}
 }
 
+func TestAGYNonTextStepsAndEmptyFailureResponse(t *testing.T) {
+	for _, line := range []string{
+		`{"event":"step_update","step_update":{"conversation_id":"agy-1","step_index":0,"state":"DONE","step_type":"user_input"}}`,
+		`{"event":"step_update","step_update":{"conversation_id":"agy-1","step_index":1,"state":"DONE","step_type":"tool","text_delta":""}}`,
+	} {
+		event, err := ParseEvent(ProviderAGY, line, 4096)
+		if err != nil || event.Kind != EventProgress || event.SessionID != "agy-1" || event.Text != "" {
+			t.Fatalf("non-text step rejected: %+v %v", event, err)
+		}
+	}
+	line := `{"event":"result","result":{"conversation_id":"agy-1","status":"ERROR","response":"","error":"request denied"}}`
+	event, err := ParseEvent(ProviderAGY, line, 4096)
+	if err != nil || event.Kind != EventResult || event.Status != "ERROR" {
+		t.Fatalf("native failure lost: %+v %v", event, err)
+	}
+}
+
 func TestParseEventDoesNotPersistUnknownRawAndBoundsLines(t *testing.T) {
 	got, err := ParseEvent(ProviderAGY, `{"event":"future_event","secret":"DROP"}`, 4096)
 	if err != nil {

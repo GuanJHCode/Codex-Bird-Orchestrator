@@ -1,0 +1,2 @@
+/Users/guanjunhui/code/ai/codex-cli-orchestration-design/tasks/multi-cli-mainflow/tmp/install-01/package
+{"installed": true, "doctor_healthy": true, "version": "0.2.0-runtime-check", "binary": "/Users/guanjunhui/code/ai/codex-cli-orchestration-design/tasks/multi-cli-mainflow/tmp/install-01/installed/versions/0.2.0-runtime-check/bin/codex-orchestrator", "native_runtime_files": 11}

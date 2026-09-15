@@ -151,7 +151,7 @@ invoke.sh wait-events --task-id <task-id> --control-file <absolute-control-file>
 `collect` does not acknowledge delivery. In collect mode, use the returned
 `collection_proof_sha256`; native delivery instead requires the exact
 `history_proof_sha256` from the owner-attached bridge. Write one owner-only
-0600 ACK request containing `task_id`, `control_file`, `delivery_id`, the proof
+0600 ACK request containing `version: 1`, `task_id`, `control_file`, `delivery_id`, the proof
 field for the run's delivery mode, and the complete `decisions` array, then run:
 
 ```text

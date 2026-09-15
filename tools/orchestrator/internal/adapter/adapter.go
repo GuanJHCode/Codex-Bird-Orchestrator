@@ -178,7 +178,7 @@ func BuildInvocation(req Request) (Invocation, error) {
 		input = []byte(req.Prompt)
 	}
 	appendPermissionArgs(&args, req.Provider, req.Permission)
-	if req.Profile != nil && req.Provider == ProviderClaude {
+	if req.Profile != nil && (req.Provider == ProviderClaude || req.Provider == ProviderAGY) {
 		if req.Profile.Model != "" {
 			args = append(args, "--model", string(req.Profile.Model))
 		}

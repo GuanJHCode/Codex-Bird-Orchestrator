@@ -126,6 +126,12 @@ func Start(ctx context.Context, spec Command) (*Handle, error) {
 	}
 	h.pgid = cmd.Process.Pid
 	h.identity = Identity{PID: cmd.Process.Pid, PGID: h.pgid, Executable: resolved, ExecutableSHA256: digest, StartedAt: time.Now().UTC().Format(time.RFC3339Nano)}
+	// Keep the child waitable until its birth is captured: even a child that
+	// has already exited retains its PID and start time until Wait reaps it.
+	birth, birthErr := processBirth(cmd.Process.Pid)
+	if birthErr == nil {
+		h.identity.Birth, h.identity.BirthKnown = birth, true
+	}
 	go func() {
 		err := cmd.Wait()
 		h.mu.Lock()
@@ -143,17 +149,12 @@ func Start(ctx context.Context, spec Command) (*Handle, error) {
 		h.mu.Unlock()
 		close(h.done)
 	}()
-	birth, err := processBirth(cmd.Process.Pid)
-	if err != nil {
+	if birthErr != nil {
 		stopCtx, cancel := context.WithTimeout(context.Background(), time.Second)
 		_ = h.Stop(stopCtx)
 		cancel()
 		return nil, CodeError("process_birth_unknown")
 	}
-	h.mu.Lock()
-	h.identity.Birth = birth
-	h.identity.BirthKnown = true
-	h.mu.Unlock()
 	return h, nil
 }
 func (h *Handle) PID() int           { return h.cmd.Process.Pid }

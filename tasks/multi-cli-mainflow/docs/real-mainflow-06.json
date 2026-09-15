@@ -1,0 +1,830 @@
+{
+  "runtime_root": "/private/tmp/multi-cli-flow-1m881xyh",
+  "providers": {
+    "claude-code": {
+      "lock": {
+        "version": 1,
+        "provider": "claude-code",
+        "protocol": "claude-stream-json-v1",
+        "binary": {
+          "path": "/Users/guanjunhui/.local/share/claude/versions/2.1.267",
+          "version": "2.1.267 (Claude Code)",
+          "sha256": "a681f3008f0050029aeebcab3af51bb6a55ddeb625a3af3141a4416d43cd2558"
+        }
+      },
+      "profile_supported": true,
+      "reason": "",
+      "status": "completed",
+      "snapshot": {
+        "task_id": "claude-code",
+        "run_id": "multi-cli-mainflow",
+        "status": "result_ready",
+        "work_revision": 1,
+        "attempt_id": "attempt-39b178dc90b5cdf75890ea2d",
+        "segment_id": "segment-e0c62706d717028dc4a8164e",
+        "segment_status": "exited",
+        "host_pid": 88346,
+        "host_birth": "Tue Sep 15 15:09:08 2026",
+        "host_status": "released",
+        "process": {
+          "pid": 88396,
+          "birth": "Tue Sep 15 15:09:08 2026",
+          "pgid": 88396
+        }
+      },
+      "collection": {
+        "delivery_id": "collection-f4375fcbaf50707a9f87597129980c54a72e4554a02c393d1ea19f45257c0fdd",
+        "collection_proof_sha256": "f4375fcbaf50707a9f87597129980c54a72e4554a02c393d1ea19f45257c0fdd",
+        "version": 1,
+        "status": "pending",
+        "events": [
+          {
+            "version": 1,
+            "producer_id": "host-launch-a62c60c9dce0c7f3c78ca6c3f0281de90e67",
+            "event_id": "host-launch-a62c60c9dce0c7f3c78ca6c3f0281de90e67:11",
+            "event_revision": 11,
+            "action_slot": "action-566319ed399b032946566abac5c591f8",
+            "run_id": "multi-cli-mainflow",
+            "task_id": "claude-code",
+            "attempt_id": "attempt-39b178dc90b5cdf75890ea2d",
+            "segment_id": "segment-e0c62706d717028dc4a8164e",
+            "work_revision": 1,
+            "execution_epoch": 1,
+            "command_id": "command-b10e12760ec5f49bf84260ff",
+            "sequence": 11,
+            "kind": "result",
+            "payload_hash": "2777935996bf5984a724c7c0e223a2ec81c4854d3576a7f472bb9d4980ba170e",
+            "process": {
+              "pid": 88396,
+              "birth": "Tue Sep 15 15:09:08 2026",
+              "pgid": 88396
+            },
+            "exit_code": 0,
+            "artifact": {
+              "id": "result-output.bin",
+              "path": "/private/tmp/multi-cli-flow-1m881xyh/state/host-spool/host-launch-a62c60c9dce0c7f3c78ca6c3f0281de90e67/attempt-39b178dc90b5cdf75890ea2d/segment-e0c62706d717028dc4a8164e/result-output.bin",
+              "size": 577,
+              "sha256": "2777935996bf5984a724c7c0e223a2ec81c4854d3576a7f472bb9d4980ba170e"
+            },
+            "session_kind": "session-id",
+            "session_id": "851b6456-286d-4aa9-81fa-345e7729911d"
+          }
+        ]
+      },
+      "read_verified": true,
+      "ack_idempotent": true,
+      "accept_idempotent": true
+    },
+    "antigravity-cli": {
+      "lock": {
+        "version": 1,
+        "provider": "antigravity-cli",
+        "protocol": "agy-stream-json-v1",
+        "binary": {
+          "path": "/Users/guanjunhui/.local/bin/agy",
+          "version": "1.2.3",
+          "sha256": "e0c2743e3fd062e11c13d2eb5fabaa244936094bbe39c30fdfbac619bb78e554"
+        }
+      },
+      "profile_supported": true,
+      "reason": "",
+      "status": "completed",
+      "snapshot": {
+        "task_id": "antigravity-cli",
+        "run_id": "multi-cli-mainflow",
+        "status": "result_ready",
+        "work_revision": 1,
+        "attempt_id": "attempt-f8e04afb6018a15146962484",
+        "segment_id": "segment-8a25af4339b0d4999b44ec03",
+        "segment_status": "exited",
+        "host_pid": 88346,
+        "host_birth": "Tue Sep 15 15:09:08 2026",
+        "host_status": "ready",
+        "process": {
+          "pid": 88397,
+          "birth": "Tue Sep 15 15:09:08 2026",
+          "pgid": 88397
+        }
+      },
+      "collection": {
+        "delivery_id": "collection-1060f7782bc266749b861491db850896c07ce0efc3dfd14c83a20f5b241b802c",
+        "collection_proof_sha256": "1060f7782bc266749b861491db850896c07ce0efc3dfd14c83a20f5b241b802c",
+        "version": 1,
+        "status": "pending",
+        "events": [
+          {
+            "version": 1,
+            "producer_id": "host-launch-a62c60c9dce0c7f3c78ca6c3f0281de90e67",
+            "event_id": "host-launch-a62c60c9dce0c7f3c78ca6c3f0281de90e67:9",
+            "event_revision": 9,
+            "action_slot": "action-8bf6d8ee00e489006374f8f2a1418662",
+            "run_id": "multi-cli-mainflow",
+            "task_id": "antigravity-cli",
+            "attempt_id": "attempt-f8e04afb6018a15146962484",
+            "segment_id": "segment-8a25af4339b0d4999b44ec03",
+            "work_revision": 1,
+            "execution_epoch": 1,
+            "command_id": "command-b80772fca465f331be337f43",
+            "sequence": 9,
+            "kind": "result",
+            "payload_hash": "035da54a745a054ecb7b87929f23d5b6d2c7a74d9b9ab452e36995664cca87bb",
+            "process": {
+              "pid": 88397,
+              "birth": "Tue Sep 15 15:09:08 2026",
+              "pgid": 88397
+            },
+            "exit_code": 0,
+            "artifact": {
+              "id": "result-output.bin",
+              "path": "/private/tmp/multi-cli-flow-1m881xyh/state/host-spool/host-launch-a62c60c9dce0c7f3c78ca6c3f0281de90e67/attempt-f8e04afb6018a15146962484/segment-8a25af4339b0d4999b44ec03/result-output.bin",
+              "size": 969,
+              "sha256": "035da54a745a054ecb7b87929f23d5b6d2c7a74d9b9ab452e36995664cca87bb"
+            },
+            "session_kind": "conversation-id",
+            "session_id": "66e399fc-442b-4062-a7c6-fcd709ff1173"
+          }
+        ]
+      },
+      "read_verified": true,
+      "ack_idempotent": true,
+      "accept_idempotent": true
+    }
+  },
+  "completed": true,
+  "summary": {
+    "version": 1,
+    "run_id": "multi-cli-mainflow",
+    "counts": {
+      "blocked": 0,
+      "completed": 2,
+      "pending": 0,
+      "running": 0
+    },
+    "tasks": [
+      {
+        "task_id": "antigravity-cli",
+        "status": "completed",
+        "group": "completed",
+        "work_revision": 1,
+        "active_segments": 0,
+        "allowed_actions": [
+          "status",
+          "collect"
+        ]
+      },
+      {
+        "task_id": "claude-code",
+        "status": "completed",
+        "group": "completed",
+        "work_revision": 1,
+        "active_segments": 0,
+        "allowed_actions": [
+          "status",
+          "collect"
+        ]
+      }
+    ]
+  },
+  "commands": [
+    {
+      "command": "ensure-running",
+      "exit": 0,
+      "status": "ready"
+    },
+    {
+      "command": "owner-bind",
+      "exit": 0,
+      "status": ""
+    },
+    {
+      "command": "provider-probe",
+      "exit": 0,
+      "status": ""
+    },
+    {
+      "command": "provider-probe",
+      "exit": 0,
+      "status": ""
+    },
+    {
+      "command": "submit",
+      "exit": 0,
+      "status": "queued"
+    },
+    {
+      "command": "status",
+      "exit": 0,
+      "status": "running"
+    },
+    {
+      "command": "status",
+      "exit": 0,
+      "status": "running"
+    },
+    {
+      "command": "status",
+      "exit": 0,
+      "status": "running"
+    },
+    {
+      "command": "status",
+      "exit": 0,
+      "status": "running"
+    },
+    {
+      "command": "status",
+      "exit": 0,
+      "status": "running"
+    },
+    {
+      "command": "status",
+      "exit": 0,
+      "status": "running"
+    },
+    {
+      "command": "status",
+      "exit": 0,
+      "status": "running"
+    },
+    {
+      "command": "status",
+      "exit": 0,
+      "status": "running"
+    },
+    {
+      "command": "status",
+      "exit": 0,
+      "status": "running"
+    },
+    {
+      "command": "status",
+      "exit": 0,
+      "status": "running"
+    },
+    {
+      "command": "status",
+      "exit": 0,
+      "status": "running"
+    },
+    {
+      "command": "status",
+      "exit": 0,
+      "status": "running"
+    },
+    {
+      "command": "status",
+      "exit": 0,
+      "status": "running"
+    },
+    {
+      "command": "status",
+      "exit": 0,
+      "status": "running"
+    },
+    {
+      "command": "status",
+      "exit": 0,
+      "status": "running"
+    },
+    {
+      "command": "status",
+      "exit": 0,
+      "status": "running"
+    },
+    {
+      "command": "status",
+      "exit": 0,
+      "status": "running"
+    },
+    {
+      "command": "status",
+      "exit": 0,
+      "status": "running"
+    },
+    {
+      "command": "status",
+      "exit": 0,
+      "status": "running"
+    },
+    {
+      "command": "status",
+      "exit": 0,
+      "status": "running"
+    },
+    {
+      "command": "status",
+      "exit": 0,
+      "status": "running"
+    },
+    {
+      "command": "status",
+      "exit": 0,
+      "status": "running"
+    },
+    {
+      "command": "status",
+      "exit": 0,
+      "status": "running"
+    },
+    {
+      "command": "status",
+      "exit": 0,
+      "status": "running"
+    },
+    {
+      "command": "status",
+      "exit": 0,
+      "status": "running"
+    },
+    {
+      "command": "status",
+      "exit": 0,
+      "status": "running"
+    },
+    {
+      "command": "status",
+      "exit": 0,
+      "status": "running"
+    },
+    {
+      "command": "status",
+      "exit": 0,
+      "status": "running"
+    },
+    {
+      "command": "status",
+      "exit": 0,
+      "status": "running"
+    },
+    {
+      "command": "status",
+      "exit": 0,
+      "status": "running"
+    },
+    {
+      "command": "status",
+      "exit": 0,
+      "status": "running"
+    },
+    {
+      "command": "status",
+      "exit": 0,
+      "status": "running"
+    },
+    {
+      "command": "status",
+      "exit": 0,
+      "status": "running"
+    },
+    {
+      "command": "status",
+      "exit": 0,
+      "status": "running"
+    },
+    {
+      "command": "status",
+      "exit": 0,
+      "status": "running"
+    },
+    {
+      "command": "status",
+      "exit": 0,
+      "status": "running"
+    },
+    {
+      "command": "status",
+      "exit": 0,
+      "status": "running"
+    },
+    {
+      "command": "status",
+      "exit": 0,
+      "status": "running"
+    },
+    {
+      "command": "status",
+      "exit": 0,
+      "status": "running"
+    },
+    {
+      "command": "status",
+      "exit": 0,
+      "status": "running"
+    },
+    {
+      "command": "status",
+      "exit": 0,
+      "status": "running"
+    },
+    {
+      "command": "status",
+      "exit": 0,
+      "status": "running"
+    },
+    {
+      "command": "status",
+      "exit": 0,
+      "status": "running"
+    },
+    {
+      "command": "status",
+      "exit": 0,
+      "status": "running"
+    },
+    {
+      "command": "status",
+      "exit": 0,
+      "status": "running"
+    },
+    {
+      "command": "status",
+      "exit": 0,
+      "status": "running"
+    },
+    {
+      "command": "status",
+      "exit": 0,
+      "status": "running"
+    },
+    {
+      "command": "status",
+      "exit": 0,
+      "status": "running"
+    },
+    {
+      "command": "status",
+      "exit": 0,
+      "status": "running"
+    },
+    {
+      "command": "status",
+      "exit": 0,
+      "status": "running"
+    },
+    {
+      "command": "status",
+      "exit": 0,
+      "status": "running"
+    },
+    {
+      "command": "status",
+      "exit": 0,
+      "status": "running"
+    },
+    {
+      "command": "status",
+      "exit": 0,
+      "status": "running"
+    },
+    {
+      "command": "status",
+      "exit": 0,
+      "status": "result_ready"
+    },
+    {
+      "command": "collect",
+      "exit": 0,
+      "status": "pending"
+    },
+    {
+      "command": "ack",
+      "exit": 0,
+      "status": "acknowledged"
+    },
+    {
+      "command": "ack",
+      "exit": 0,
+      "status": "acknowledged"
+    },
+    {
+      "command": "status",
+      "exit": 0,
+      "status": "result_ready"
+    },
+    {
+      "command": "accept",
+      "exit": 0,
+      "status": "accepted"
+    },
+    {
+      "command": "accept",
+      "exit": 0,
+      "status": "accepted"
+    },
+    {
+      "command": "status",
+      "exit": 0,
+      "status": "completed"
+    },
+    {
+      "command": "status",
+      "exit": 0,
+      "status": "running"
+    },
+    {
+      "command": "status",
+      "exit": 0,
+      "status": "running"
+    },
+    {
+      "command": "status",
+      "exit": 0,
+      "status": "running"
+    },
+    {
+      "command": "status",
+      "exit": 0,
+      "status": "running"
+    },
+    {
+      "command": "status",
+      "exit": 0,
+      "status": "running"
+    },
+    {
+      "command": "status",
+      "exit": 0,
+      "status": "running"
+    },
+    {
+      "command": "status",
+      "exit": 0,
+      "status": "running"
+    },
+    {
+      "command": "status",
+      "exit": 0,
+      "status": "running"
+    },
+    {
+      "command": "status",
+      "exit": 0,
+      "status": "running"
+    },
+    {
+      "command": "status",
+      "exit": 0,
+      "status": "running"
+    },
+    {
+      "command": "status",
+      "exit": 0,
+      "status": "running"
+    },
+    {
+      "command": "status",
+      "exit": 0,
+      "status": "running"
+    },
+    {
+      "command": "status",
+      "exit": 0,
+      "status": "running"
+    },
+    {
+      "command": "status",
+      "exit": 0,
+      "status": "running"
+    },
+    {
+      "command": "status",
+      "exit": 0,
+      "status": "running"
+    },
+    {
+      "command": "status",
+      "exit": 0,
+      "status": "running"
+    },
+    {
+      "command": "status",
+      "exit": 0,
+      "status": "running"
+    },
+    {
+      "command": "status",
+      "exit": 0,
+      "status": "running"
+    },
+    {
+      "command": "status",
+      "exit": 0,
+      "status": "running"
+    },
+    {
+      "command": "status",
+      "exit": 0,
+      "status": "running"
+    },
+    {
+      "command": "status",
+      "exit": 0,
+      "status": "running"
+    },
+    {
+      "command": "status",
+      "exit": 0,
+      "status": "running"
+    },
+    {
+      "command": "status",
+      "exit": 0,
+      "status": "running"
+    },
+    {
+      "command": "status",
+      "exit": 0,
+      "status": "running"
+    },
+    {
+      "command": "status",
+      "exit": 0,
+      "status": "running"
+    },
+    {
+      "command": "status",
+      "exit": 0,
+      "status": "running"
+    },
+    {
+      "command": "status",
+      "exit": 0,
+      "status": "running"
+    },
+    {
+      "command": "status",
+      "exit": 0,
+      "status": "running"
+    },
+    {
+      "command": "status",
+      "exit": 0,
+      "status": "running"
+    },
+    {
+      "command": "status",
+      "exit": 0,
+      "status": "running"
+    },
+    {
+      "command": "status",
+      "exit": 0,
+      "status": "running"
+    },
+    {
+      "command": "status",
+      "exit": 0,
+      "status": "running"
+    },
+    {
+      "command": "status",
+      "exit": 0,
+      "status": "running"
+    },
+    {
+      "command": "status",
+      "exit": 0,
+      "status": "running"
+    },
+    {
+      "command": "status",
+      "exit": 0,
+      "status": "running"
+    },
+    {
+      "command": "status",
+      "exit": 0,
+      "status": "running"
+    },
+    {
+      "command": "status",
+      "exit": 0,
+      "status": "running"
+    },
+    {
+      "command": "status",
+      "exit": 0,
+      "status": "running"
+    },
+    {
+      "command": "status",
+      "exit": 0,
+      "status": "running"
+    },
+    {
+      "command": "status",
+      "exit": 0,
+      "status": "running"
+    },
+    {
+      "command": "status",
+      "exit": 0,
+      "status": "running"
+    },
+    {
+      "command": "status",
+      "exit": 0,
+      "status": "running"
+    },
+    {
+      "command": "status",
+      "exit": 0,
+      "status": "running"
+    },
+    {
+      "command": "status",
+      "exit": 0,
+      "status": "running"
+    },
+    {
+      "command": "status",
+      "exit": 0,
+      "status": "running"
+    },
+    {
+      "command": "status",
+      "exit": 0,
+      "status": "running"
+    },
+    {
+      "command": "status",
+      "exit": 0,
+      "status": "running"
+    },
+    {
+      "command": "status",
+      "exit": 0,
+      "status": "running"
+    },
+    {
+      "command": "status",
+      "exit": 0,
+      "status": "running"
+    },
+    {
+      "command": "status",
+      "exit": 0,
+      "status": "running"
+    },
+    {
+      "command": "status",
+      "exit": 0,
+      "status": "running"
+    },
+    {
+      "command": "status",
+      "exit": 0,
+      "status": "running"
+    },
+    {
+      "command": "status",
+      "exit": 0,
+      "status": "running"
+    },
+    {
+      "command": "status",
+      "exit": 0,
+      "status": "result_ready"
+    },
+    {
+      "command": "collect",
+      "exit": 0,
+      "status": "pending"
+    },
+    {
+      "command": "ack",
+      "exit": 0,
+      "status": "acknowledged"
+    },
+    {
+      "command": "ack",
+      "exit": 0,
+      "status": "acknowledged"
+    },
+    {
+      "command": "status",
+      "exit": 0,
+      "status": "result_ready"
+    },
+    {
+      "command": "accept",
+      "exit": 0,
+      "status": "accepted"
+    },
+    {
+      "command": "accept",
+      "exit": 0,
+      "status": "accepted"
+    },
+    {
+      "command": "status",
+      "exit": 0,
+      "status": "completed"
+    },
+    {
+      "command": "summary",
+      "exit": 0,
+      "status": ""
+    }
+  ]
+}

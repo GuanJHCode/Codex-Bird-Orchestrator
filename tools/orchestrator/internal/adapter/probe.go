@@ -27,11 +27,26 @@ func ProbeOutput(ctx context.Context, path string, args ...string) (string, erro
 	ctx, cancel := context.WithTimeout(ctx, 2*time.Second)
 	defer cancel()
 	cmd := exec.CommandContext(ctx, path, args...)
+	// AGY's version/help commands must use the same no-update environment as
+	// execution. Other providers ignore this provider-specific switch.
+	cmd.Env = append(os.Environ(), "AGY_CLI_DISABLE_AUTO_UPDATE=true")
 	var output probeBuffer
 	cmd.Stdout = &output
 	cmd.Stderr = io.Discard
+	var helpOutput probeBuffer
+	isHelp := len(args) == 1 && args[0] == "--help"
+	if isHelp {
+		// Go flag-based CLIs commonly print successful help to stderr.
+		cmd.Stderr = &helpOutput
+	}
 	if err := cmd.Run(); err != nil {
 		return "", errors.New("provider_probe_failed")
+	}
+	if isHelp {
+		if output.Len()+helpOutput.Len() > 64*1024 {
+			return "", errors.New("provider_probe_too_large")
+		}
+		return strings.TrimSpace(output.String() + "\n" + helpOutput.String()), nil
 	}
 	return strings.TrimSpace(output.String()), nil
 }

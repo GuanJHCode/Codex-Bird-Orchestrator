@@ -1,0 +1,4 @@
+=== RUN   TestCLILocalOwnerCollectWithoutNativeBridge
+--- PASS: TestCLILocalOwnerCollectWithoutNativeBridge (2.34s)
+PASS
+ok  	codex-cli-orchestration-design/tools/orchestrator/cmd/orchestrator	2.783s

@@ -6,9 +6,11 @@ import (
 	"os"
 	"os/exec"
 	"path/filepath"
+	"strconv"
 	"testing"
 	"time"
 
+	"codex-cli-orchestration-design/tools/orchestrator/internal/contract"
 	"codex-cli-orchestration-design/tools/orchestrator/internal/process"
 )
 
@@ -71,11 +73,34 @@ func TestCLILocalOwnerCollectWithoutNativeBridge(t *testing.T) {
 		}
 		time.Sleep(30 * time.Millisecond)
 	}
-	var collection map[string]any
+	var collection struct {
+		DeliveryID            string           `json:"delivery_id"`
+		CollectionProofSHA256 string           `json:"collection_proof_sha256"`
+		Events                []contract.Event `json:"events"`
+	}
 	if err = json.Unmarshal(runBinary(t, ctx, bin, "collect", "--state-dir", state, "--task-id", "task", "--control-file", submitted.ControlFile), &collection); err != nil {
 		t.Fatal(err)
 	}
-	if collection["collection_proof_sha256"] == nil {
+	if collection.CollectionProofSHA256 == "" || len(collection.Events) != 1 {
 		t.Fatalf("missing receipt: %#v", collection)
+	}
+	event := collection.Events[0]
+	write(map[string]any{"version": 1, "task_id": "task", "control_file": submitted.ControlFile,
+		"delivery_id": collection.DeliveryID, "collection_proof_sha256": collection.CollectionProofSHA256,
+		"decisions": []map[string]any{{"event_id": event.EventID, "event_revision": event.EventRevision,
+			"event_hash": event.PayloadHash, "action_slot": event.ActionSlot, "decision": "handled", "command_id": "ack-result"}}})
+	for i := 0; i < 2; i++ {
+		runBinary(t, ctx, bin, "ack", "--state-dir", state, "--request", path)
+	}
+	if snapshot := taskStatus(t, ctx, bin, state, "task", submitted.ControlFile); snapshot.Status != "result_ready" {
+		t.Fatalf("delivery ACK accepted business result: %+v", snapshot)
+	}
+	for i := 0; i < 2; i++ {
+		runBinary(t, ctx, bin, "accept", "--state-dir", state, "--task-id", "task", "--control-file", submitted.ControlFile,
+			"--work-revision", "1", "--event-id", event.EventID, "--event-revision", strconv.FormatInt(event.EventRevision, 10),
+			"--event-hash", event.PayloadHash, "--action-slot", event.ActionSlot, "--decision", "accept", "--command-id", "accept-result")
+	}
+	if snapshot := taskStatus(t, ctx, bin, state, "task", submitted.ControlFile); snapshot.Status != "completed" {
+		t.Fatalf("result acceptance did not complete task: %+v", snapshot)
 	}
 }

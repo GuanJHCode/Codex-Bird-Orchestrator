@@ -1,0 +1,16 @@
+[
+  "tools/orchestrator/internal/adapter/profile_test.go",
+  "tools/orchestrator/internal/adapter/adapter_test.go",
+  "tools/orchestrator/internal/adapter/protocol.go",
+  "tools/orchestrator/internal/adapter/profile.go",
+  "tools/orchestrator/internal/adapter/adapter.go",
+  "tools/orchestrator/internal/adapter/probe.go",
+  "tools/orchestrator/internal/process/process_test.go",
+  "tools/orchestrator/internal/process/process.go",
+  "tools/orchestrator/cmd/orchestrator/provider.go",
+  "tools/orchestrator/cmd/orchestrator/local_owner_test.go",
+  "docs/support-matrix.md",
+  "docs/provider-runtime.md",
+  "plugins/codex-orchestrator/skills/orchestrate/SKILL.md",
+  "tools/orchestrator/internal/adapter/probe_test.go"
+]

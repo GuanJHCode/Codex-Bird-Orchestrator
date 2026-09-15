@@ -1,0 +1,12 @@
+=== RUN   TestProbeAcceptsHelpOnStderrWithoutMixingVersionDiagnostics
+--- PASS: TestProbeAcceptsHelpOnStderrWithoutMixingVersionDiagnostics (0.35s)
+=== RUN   TestProbeAcceptsHelpOnStderrWithoutMixingVersionDiagnostics
+--- PASS: TestProbeAcceptsHelpOnStderrWithoutMixingVersionDiagnostics (0.29s)
+=== RUN   TestProbeAcceptsHelpOnStderrWithoutMixingVersionDiagnostics
+--- PASS: TestProbeAcceptsHelpOnStderrWithoutMixingVersionDiagnostics (0.30s)
+=== RUN   TestProbeAcceptsHelpOnStderrWithoutMixingVersionDiagnostics
+--- PASS: TestProbeAcceptsHelpOnStderrWithoutMixingVersionDiagnostics (0.62s)
+=== RUN   TestProbeAcceptsHelpOnStderrWithoutMixingVersionDiagnostics
+--- PASS: TestProbeAcceptsHelpOnStderrWithoutMixingVersionDiagnostics (0.29s)
+PASS
+ok  	codex-cli-orchestration-design/tools/orchestrator/internal/adapter	2.743s

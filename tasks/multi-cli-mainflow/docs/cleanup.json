@@ -1,0 +1,26 @@
+{
+  "removed": [
+    "tasks/multi-cli-mainflow/tmp/venv",
+    "tasks/multi-cli-mainflow/tmp/install-01/package",
+    "tasks/multi-cli-mainflow/tmp/install-02/package",
+    "tasks/multi-cli-mainflow/tmp/codex-orchestrator",
+    "tasks/multi-cli-mainflow/tmp/install-01/install.json",
+    "tasks/multi-cli-mainflow/tmp/install-01/doctor.json",
+    "tasks/multi-cli-mainflow/tmp/install-02/install.json",
+    "tasks/multi-cli-mainflow/tmp/install-02/doctor.json",
+    "/private/tmp/multi-cli-flow-r19kmd8a",
+    "/private/tmp/multi-cli-flow-qifm8eja",
+    "tasks/multi-cli-mainflow/tmp/before",
+    "tasks/multi-cli-mainflow/tmp/install-03/package",
+    "tasks/multi-cli-mainflow/tmp/install-03/install.json",
+    "tasks/multi-cli-mainflow/tmp/install-03/doctor.json",
+    "tasks/multi-cli-mainflow/tmp/codex-orchestrator"
+  ],
+  "retained": [
+    "tmp/install-01/installed (earlier interrupted trial bindings)",
+    "tmp/install-02/installed (pre-final verified backup)",
+    "tmp/install-03/installed (final verified delivery)",
+    "real trial state/artifacts and diagnostic probe roots for evidence/recovery",
+    "data/changes.patch and all source/tests/reports"
+  ]
+}

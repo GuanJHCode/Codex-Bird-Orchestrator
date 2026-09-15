@@ -1,0 +1,21 @@
+ok  	codex-cli-orchestration-design/tools/orchestrator/cmd/orchestrator	17.663s
+--- FAIL: TestProbeAcceptsHelpOnStderrWithoutMixingVersionDiagnostics (3.23s)
+    probe_test.go:25: diagnostic launch /bin/sh: elapsed=5.057375ms output="--input-format --output-format --mode\n" err=<nil>
+    probe_test.go:25: diagnostic launch /var/folders/y_/9wqjj5ws6v9ggszdzytmxdlc0000gn/T/TestProbeAcceptsHelpOnStderrWithoutMixingVersionDiagnostics3865231950/001/provider: elapsed=1.224652167s output="--input-format --output-format --mode\n" err=<nil>
+    probe_test.go:27: stderr help lost: "" provider_probe_failed
+FAIL
+FAIL	codex-cli-orchestration-design/tools/orchestrator/internal/adapter	4.242s
+ok  	codex-cli-orchestration-design/tools/orchestrator/internal/admincli	1.314s
+?   	codex-cli-orchestration-design/tools/orchestrator/internal/contract	[no test files]
+ok  	codex-cli-orchestration-design/tools/orchestrator/internal/coordinator	5.975s
+ok  	codex-cli-orchestration-design/tools/orchestrator/internal/events	1.665s
+ok  	codex-cli-orchestration-design/tools/orchestrator/internal/gitops	15.068s
+ok  	codex-cli-orchestration-design/tools/orchestrator/internal/gitopsworker	5.422s
+ok  	codex-cli-orchestration-design/tools/orchestrator/internal/host	8.223s
+ok  	codex-cli-orchestration-design/tools/orchestrator/internal/install	4.830s
+ok  	codex-cli-orchestration-design/tools/orchestrator/internal/instance	3.526s
+ok  	codex-cli-orchestration-design/tools/orchestrator/internal/ipc	3.815s
+ok  	codex-cli-orchestration-design/tools/orchestrator/internal/nativebridgecli	4.740s
+ok  	codex-cli-orchestration-design/tools/orchestrator/internal/process	3.799s
+ok  	codex-cli-orchestration-design/tools/orchestrator/internal/store	3.074s
+FAIL

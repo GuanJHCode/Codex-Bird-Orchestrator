@@ -1,0 +1,26 @@
+=== RUN   TestAGYWaitingResultIsAUserQuestion
+--- PASS: TestAGYWaitingResultIsAUserQuestion (0.00s)
+=== RUN   TestAGYNonTextStepsAndEmptyFailureResponse
+--- PASS: TestAGYNonTextStepsAndEmptyFailureResponse (0.00s)
+=== RUN   TestAGYReviewerProfileUsesNativePlanAndTypedModel
+--- PASS: TestAGYReviewerProfileUsesNativePlanAndTypedModel (0.00s)
+PASS
+ok  	codex-cli-orchestration-design/tools/orchestrator/internal/adapter	0.871s
+=== RUN   TestStructuredProviderTerminalControlsOutcome
+=== RUN   TestStructuredProviderTerminalControlsOutcome/success
+=== RUN   TestStructuredProviderTerminalControlsOutcome/provider_error_exits_zero
+=== RUN   TestStructuredProviderTerminalControlsOutcome/waiting
+=== RUN   TestStructuredProviderTerminalControlsOutcome/missing_terminal
+=== RUN   TestStructuredProviderTerminalControlsOutcome/nonzero
+=== RUN   TestStructuredProviderTerminalControlsOutcome/grok_stream
+=== RUN   TestStructuredProviderTerminalControlsOutcome/codex_oversized_final
+--- PASS: TestStructuredProviderTerminalControlsOutcome (0.72s)
+    --- PASS: TestStructuredProviderTerminalControlsOutcome/success (0.10s)
+    --- PASS: TestStructuredProviderTerminalControlsOutcome/provider_error_exits_zero (0.10s)
+    --- PASS: TestStructuredProviderTerminalControlsOutcome/waiting (0.10s)
+    --- PASS: TestStructuredProviderTerminalControlsOutcome/missing_terminal (0.09s)
+    --- PASS: TestStructuredProviderTerminalControlsOutcome/nonzero (0.10s)
+    --- PASS: TestStructuredProviderTerminalControlsOutcome/grok_stream (0.11s)
+    --- PASS: TestStructuredProviderTerminalControlsOutcome/codex_oversized_final (0.12s)
+PASS
+ok  	codex-cli-orchestration-design/tools/orchestrator/internal/host	1.874s

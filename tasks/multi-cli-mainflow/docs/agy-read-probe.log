@@ -1,0 +1,13 @@
+root /private/tmp/multi-cli-agy-probe-u9c7kqm9 exit 0
+stdout bytes 3763
+stdout {'event': 'init', 'keys': ['event', 'conversation_id', 'init'], 'step': {}, 'result': {}}
+stdout {'event': 'step_update', 'keys': ['event', 'step_update'], 'step': {'state': 'DONE', 'step_type': 'user_input'}, 'result': {}}
+stdout {'event': 'step_update', 'keys': ['event', 'step_update'], 'step': {'state': 'DONE', 'step_type': 'agent_response'}, 'result': {}}
+stdout {'event': 'step_update', 'keys': ['event', 'step_update'], 'step': {'state': 'ACTIVE', 'step_type': 'tool', 'tool_name': 'run_command'}, 'result': {}}
+stdout {'event': 'step_update', 'keys': ['event', 'step_update'], 'step': {'state': 'ERROR', 'step_type': 'tool', 'tool_name': 'run_command'}, 'result': {}}
+stdout {'event': 'step_update', 'keys': ['event', 'step_update'], 'step': {'state': 'DONE', 'step_type': 'agent_response'}, 'result': {}}
+stdout {'event': 'step_update', 'keys': ['event', 'step_update'], 'step': {'state': 'ACTIVE', 'step_type': 'tool', 'tool_name': 'find_by_name'}, 'result': {}}
+stdout {'event': 'step_update', 'keys': ['event', 'step_update'], 'step': {'state': 'DONE', 'step_type': 'tool', 'tool_name': 'find_by_name'}, 'result': {}}
+stdout {'event': 'result', 'keys': ['event', 'result'], 'step': {}, 'result': {'status': 'SUCCESS', 'response': ''}}
+stderr bytes 0
+scratch_files ['unleash-repo-schema-v1-codeium-language-server.json', 'cli.log']

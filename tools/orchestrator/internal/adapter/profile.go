@@ -3,7 +3,6 @@ package adapter
 import (
 	"errors"
 	"regexp"
-	"strings"
 )
 
 type Role string
@@ -80,7 +79,7 @@ func validateProfile(req Request) error {
 	if p.Reasoning != "" && p.Reasoning != "low" && p.Reasoning != "medium" && p.Reasoning != "high" {
 		return errors.New("reasoning_unsupported")
 	}
-	if req.Provider != ProviderClaude && req.Provider != ProviderCodex {
+	if req.Provider != ProviderClaude && req.Provider != ProviderCodex && req.Provider != ProviderAGY {
 		return errors.New("execution_profile_unsupported")
 	}
 	if len(req.Permission.Allow) > 0 || len(req.Permission.Deny) > 0 || (req.Permission.Mode != "" && req.Permission.Mode != "plan" && req.Permission.Mode != "default") {
@@ -113,6 +112,9 @@ func CheckCapabilities(req Request, help string) error {
 		return nil
 	}
 	flags := []string{"--output-format", "--input-format", "--permission-mode"}
+	if req.Provider == ProviderAGY {
+		flags = []string{"--output-format", "--input-format", "--mode"}
+	}
 	if req.Provider == ProviderCodex {
 		return errors.New("codex_trial_guard_not_ready")
 	}
@@ -126,7 +128,9 @@ func CheckCapabilities(req Request, help string) error {
 		flags = append(flags, "--resume")
 	}
 	for _, flag := range flags {
-		if !strings.Contains(help, flag) {
+		// Match a whole option: --model must not establish support for --mode.
+		matched, _ := regexp.MatchString(`(^|[\s,])`+regexp.QuoteMeta(flag)+`([\s=,]|$)`, help)
+		if !matched {
 			return errors.New("provider_capability_unsupported")
 		}
 	}

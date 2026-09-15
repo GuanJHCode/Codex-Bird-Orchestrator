@@ -237,7 +237,8 @@ func parseAGY(object map[string]json.RawMessage) (Event, error) {
 		if err != nil {
 			return Event{}, err
 		}
-		text, err := stringNestedField(value, "text_delta")
+		// User-input, tool and checkpoint steps need not contain response text.
+		text, err := stringFieldOptional(value, "text_delta")
 		return Event{Kind: EventProgress, SessionID: session, Text: text}, err
 	case "result":
 		var value map[string]json.RawMessage
@@ -255,7 +256,10 @@ func parseAGY(object map[string]json.RawMessage) (Event, error) {
 		if !validAGYStatus(status) {
 			return Event{}, errors.New("event_status_invalid")
 		}
-		text, err := stringNestedField(value, "response")
+		text, err := stringFieldOptional(value, "response")
+		if status == "SUCCESS" || status == "WAITING" {
+			text, err = stringNestedField(value, "response")
+		}
 		kind := EventResult
 		if status == "WAITING" {
 			kind = EventQuestion

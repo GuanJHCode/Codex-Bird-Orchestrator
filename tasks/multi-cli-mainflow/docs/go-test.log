@@ -1,0 +1,19 @@
+ok  	codex-cli-orchestration-design/tools/orchestrator/cmd/orchestrator	16.951s
+--- FAIL: TestProbeAcceptsHelpOnStderrWithoutMixingVersionDiagnostics (2.00s)
+    probe_test.go:18: stderr help lost: "" provider_probe_failed
+FAIL
+FAIL	codex-cli-orchestration-design/tools/orchestrator/internal/adapter	2.927s
+ok  	codex-cli-orchestration-design/tools/orchestrator/internal/admincli	1.668s
+?   	codex-cli-orchestration-design/tools/orchestrator/internal/contract	[no test files]
+ok  	codex-cli-orchestration-design/tools/orchestrator/internal/coordinator	6.525s
+ok  	codex-cli-orchestration-design/tools/orchestrator/internal/events	2.126s
+ok  	codex-cli-orchestration-design/tools/orchestrator/internal/gitops	13.266s
+ok  	codex-cli-orchestration-design/tools/orchestrator/internal/gitopsworker	4.630s
+ok  	codex-cli-orchestration-design/tools/orchestrator/internal/host	7.909s
+ok  	codex-cli-orchestration-design/tools/orchestrator/internal/install	6.076s
+ok  	codex-cli-orchestration-design/tools/orchestrator/internal/instance	4.531s
+ok  	codex-cli-orchestration-design/tools/orchestrator/internal/ipc	4.869s
+ok  	codex-cli-orchestration-design/tools/orchestrator/internal/nativebridgecli	5.217s
+ok  	codex-cli-orchestration-design/tools/orchestrator/internal/process	4.120s
+ok  	codex-cli-orchestration-design/tools/orchestrator/internal/store	3.973s
+FAIL

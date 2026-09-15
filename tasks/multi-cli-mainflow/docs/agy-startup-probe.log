@@ -1,0 +1,10 @@
+root /private/tmp/multi-cli-agy-probe-103hzskl exit 0
+stdout bytes 2412
+stdout {'event': 'init', 'keys': ['event', 'conversation_id', 'init'], 'result': {}}
+stdout {'event': 'step_update', 'keys': ['event', 'step_update'], 'result': {}}
+stdout {'event': 'step_update', 'keys': ['event', 'step_update'], 'result': {}}
+stdout {'event': 'step_update', 'keys': ['event', 'step_update'], 'result': {}}
+stdout {'event': 'step_update', 'keys': ['event', 'step_update'], 'result': {}}
+stdout {'event': 'result', 'keys': ['event', 'result'], 'result': {'status': 'SUCCESS', 'response': 'AGY_START_OK\n'}}
+stderr bytes 0
+scratch_files ['unleash-repo-schema-v1-codeium-language-server.json', 'cli.log']

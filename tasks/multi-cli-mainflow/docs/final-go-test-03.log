@@ -1,0 +1,15 @@
+ok  	codex-cli-orchestration-design/tools/orchestrator/cmd/orchestrator	16.252s
+ok  	codex-cli-orchestration-design/tools/orchestrator/internal/adapter	0.977s
+ok  	codex-cli-orchestration-design/tools/orchestrator/internal/admincli	1.351s
+?   	codex-cli-orchestration-design/tools/orchestrator/internal/contract	[no test files]
+ok  	codex-cli-orchestration-design/tools/orchestrator/internal/coordinator	4.880s
+ok  	codex-cli-orchestration-design/tools/orchestrator/internal/events	1.820s
+ok  	codex-cli-orchestration-design/tools/orchestrator/internal/gitops	11.907s
+ok  	codex-cli-orchestration-design/tools/orchestrator/internal/gitopsworker	4.786s
+ok  	codex-cli-orchestration-design/tools/orchestrator/internal/host	7.391s
+ok  	codex-cli-orchestration-design/tools/orchestrator/internal/install	5.588s
+ok  	codex-cli-orchestration-design/tools/orchestrator/internal/instance	4.331s
+ok  	codex-cli-orchestration-design/tools/orchestrator/internal/ipc	3.905s
+ok  	codex-cli-orchestration-design/tools/orchestrator/internal/nativebridgecli	5.439s
+ok  	codex-cli-orchestration-design/tools/orchestrator/internal/process	4.419s
+ok  	codex-cli-orchestration-design/tools/orchestrator/internal/store	4.554s

@@ -1,0 +1,62 @@
+{
+  "runtime_root": "/private/tmp/multi-cli-flow-qifm8eja",
+  "providers": {
+    "claude-code": {
+      "lock": {
+        "version": 1,
+        "provider": "claude-code",
+        "protocol": "claude-stream-json-v1",
+        "binary": {
+          "path": "/Users/guanjunhui/.local/share/claude/versions/2.1.267",
+          "version": "2.1.267 (Claude Code)",
+          "sha256": "a681f3008f0050029aeebcab3af51bb6a55ddeb625a3af3141a4416d43cd2558"
+        }
+      },
+      "profile_supported": true,
+      "reason": ""
+    },
+    "antigravity-cli": {
+      "lock": {
+        "version": 1,
+        "provider": "antigravity-cli",
+        "protocol": "agy-stream-json-v1",
+        "binary": {
+          "path": "/Users/guanjunhui/.local/bin/agy",
+          "version": "1.2.3",
+          "sha256": "e0c2743e3fd062e11c13d2eb5fabaa244936094bbe39c30fdfbac619bb78e554"
+        }
+      },
+      "profile_supported": true,
+      "reason": ""
+    }
+  },
+  "completed": false,
+  "error": "submit: {'error': 'running_package_invalid', 'status': 'error', 'version': 1}",
+  "commands": [
+    {
+      "command": "ensure-running",
+      "exit": 0,
+      "status": "ready"
+    },
+    {
+      "command": "owner-bind",
+      "exit": 0,
+      "status": ""
+    },
+    {
+      "command": "provider-probe",
+      "exit": 0,
+      "status": ""
+    },
+    {
+      "command": "provider-probe",
+      "exit": 0,
+      "status": ""
+    },
+    {
+      "command": "submit",
+      "exit": 2,
+      "status": "error"
+    }
+  ]
+}
