@@ -20,6 +20,17 @@ jobs:
       - uses: actions/setup-python@5fda3b95a4ea91299a34e894583c3862153e4b97 # v7
         with:
           python-version: '3.14'
+      - name: Pin CI interpreter permissions
+        run: |
+          python - <<'PY'
+          import pathlib, stat, sys
+          interpreter = pathlib.Path(sys.executable).resolve(strict=True)
+          mode = stat.S_IMODE(interpreter.stat().st_mode)
+          print(f"CI interpreter: {interpreter}, mode before: {mode:o}")
+          # Hosted toolcache permissions must satisfy the production pin policy.
+          interpreter.chmod(mode & ~0o022)
+          print(f"CI interpreter mode after: {stat.S_IMODE(interpreter.stat().st_mode):o}")
+          PY
       - name: Go build, tests, race and vet
         working-directory: tools/orchestrator
         run: |
